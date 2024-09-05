@@ -19,7 +19,7 @@ let cars = ['Urus' , 'Bentley' , 'BMW']
 // cars.push('Audi')
 // console.log(cars)
 
-
+// step 2
 //2. pop method
 // pop method will remove an element from the end of an array
 // let removedElement1 = cars.pop() // Audi
