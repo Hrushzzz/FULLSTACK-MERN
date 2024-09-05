@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Specificity</title>
+
+    <!-- <link rel="stylesheet" href="./style.css"> -->
+    <style>
+        *{
+            color: bisque;
+        }
+        .heading {
+            color: tomato;
+        }
+        h1.heading {
+            color: deeppink;
+        }
+        #the-head {
+            color: darkgoldenrod;
+        }
+        h1#the-head {
+            color: black;
+        }
+        body h1#the-head {
+            color: chartreuse;
+        }
+        h1 {
+            color: green !important;
+        }
+        h1 {
+            color: yellow;
+        }
+        h1 {
+            color: blue;
+        }
+    </style>
+
+</head>
+<body>
+
+    <h1 class="heading" id="the-head" style="color:rgb(253, 6, 253);">Hello World..!</h1>
+    <h1 class="heading">Hello World 2</h1>
+    <h2 class="heading">Hello World 3</h2>
+    
+</body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DOM - Q5</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        padding-top: 5rem;
+      }
+
+      .blue {
+        background-color: blue;
+        box-shadow: 0px 0px 6px 5px;
+      }
+
+      .green {
+        background-color: green;
+        box-shadow: 0px 0px 6px 5px;
+      }
+
+      .red {
+        background-color: red;
+        box-shadow: 0px 0px 6px 5px;
+      }
+
+      .card {
+        border: 1px solid;
+        height: 10rem;
+        width: 10rem;
+        margin: 2rem;
+      }
+
+      .used{
+        background-color: white;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="card" data-color="blue"></div>  
+    <div class="card" data-color="red"></div>
+    <div class="card" data-color="blue"></div>
+    <div class="card" data-color="red"></div>
+    <div class="card" data-color="red"></div>
+    <div class="card" data-color="blue"></div>
+    <div class="card" data-color="green"></div>
+    <div class="card" data-color="blue"></div>
+    <div class="card" data-color="green"></div>
+    <div class="card" data-color="blue"></div>
+  </body>
+
+  <script>
+    // Q - Write a script which fetches the data-color attribute of the card on 
+    //double clicking on them and attaches the fetched class to that card.
+    // Also changes the data-color attribute to "used"
+
+    let cardNodeList = document.querySelectorAll(".card");
+    // console.log(cardNodeList);
+    for (let i = 0 ; i < cardNodeList.length ; i++) {
+        cardNodeList[i].addEventListener("dblclick" , function(e) {
+            let classToBeAttached = e.currentTarget.getAttribute("data-color");
+            e.currentTarget.classList.add(classToBeAttached);
+
+            e.currentTarget.setAttribute("data-color" , "used");
+        });
+    }
+
+  </script>
+</html>
+
+<!-- The getAttribute() method in JavaScript allows you to retrieve the value of a specified attribute on an HTML element.
+ It’s commonly used when you need to access and manipulate attributes within your web page’s content. -->
+
+ <!-- ClassList ::: The `classList` property in JavaScript allows you to work with CSS classes on HTML elements. 
+  It provides a convenient way to manipulate class names without directly modifying the `className` property. -->
+
+  <!-- So , ideally we should use nodelist when we want to target or return html
+and e(event object) to get the proprtties and methods of that element -->

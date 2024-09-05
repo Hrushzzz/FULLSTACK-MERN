@@ -1,0 +1,7 @@
+:root{
+    --primary:#eb4034;
+}
+
+h1{
+    color:var(--primary);
+}

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Units</title>
+    <link rel="stylesheet" href="./units.css">
+    <style>
+        .parent{
+            height: 500px;
+            width: 500px;
+            /*relative to viewport, viewport height and viewport width  */
+            /* height: 50vh;
+            width: 50vw;  */
+            
+            background-color: yellow;
+        }
+        .child{
+            /* relative unit   */
+            height: 50%;
+            width: 50%;
+            background-color: red;
+        }
+        p{
+            font-size: 2rem;
+        }
+        div{
+            font-size: 40px;
+        }
+        div p{
+            font-size: 3em;
+        }
+    </style>
+</head>
+<body>
+    <!-- <div class="parent">
+        <div class="child"></div>
+    </div> -->
+    <h1>Hello world</h1>
+    <p>I am giving in rem</p>
+    <div>
+        <p>I am giving in em</p>
+    </div>
+</body>
+</html>

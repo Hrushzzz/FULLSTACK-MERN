@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+
+        .container {
+            border: 2px solid black;
+            background-color: burlywood;
+            height: 2000px;
+        }
+
+        .container2 {
+            border: 2px solid red;
+            background-color: aqua;
+            height: 2000px;
+        }
+        img {
+            margin: 10px;
+        }
+
+        /**** Relative takes position from its previous position , where as Absolute takes position from its nearest ancestors position
+        If there is no ancestor it will take from the window ****/
+
+        /* .image2 {
+             position: relative;
+            top: 80px;
+            left : 80px;
+            We can use top, bottom , right ,left
+        } */
+
+        /* .image3 {
+            position: absolute;
+            top: 50px;
+        } */
+
+        .image4 {
+            position: fixed;
+            top: 50px;
+        }
+
+        /*** Sticky will work in a container where it resides , where as fixed works all over the window ***/
+
+        .image1 {
+            position: sticky;
+            top: 50px;
+        }
+
+    </style>
+
+</head>
+<body>
+
+        <div class="container">
+            <img src = "https://tse1.mm.bing.net/th?id=OIP.lA6fODzvmxQhl8Y3jG-migHaJ4&pid=Api&P=0&h=220" alt="" width="100px" height="150px" class="image1"/>
+            <img src = "https://tse3.mm.bing.net/th?id=OIP.yYl5eVqGw4rbbn2KqLCZjgHaK9&pid=Api&P=0&h=220" alt="" width="100px" height="150px" class="image2"/>
+            <img src = "https://tse1.mm.bing.net/th?id=OIP.YD6iHw5FBQmU4zAWB1SAtwHaKe&pid=Api&P=0&h=220" alt="" width="100px1" height="150px" class="image4"/>
+        </div>
+
+        <div class="container2">
+            <img src = "https://tse4.mm.bing.net/th?id=OIP.bYfwGjFEHUvQ7WrREeb41AHaKe&pid=Api&P=0&h=220" alt="" width="100px" height="150px" class="image3"/>
+        </div>
+  
+</body>
+</html>

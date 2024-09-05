@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DOM - Q1</title>
+  </head>
+  <body>
+    
+    <button id="btn-1">Say Hello</button>
+    <!-- <button id="btn-2">Say Hello</button>
+    <button class="btn-3">Say GoodBye</button> -->
+
+</body>
+
+<script>
+    //Q1 -- > On Clicking the Button append hello to the page
+    //The Document method querySelector() returns the first Element within
+    //the document that matches the specified selector,
+    //or group of selectors. If no matches are found, null is returned.
+
+
+    // identify something in DOM ::: 
+
+    //getElementById() :::
+    // let btn1 = document.getElementById("btn-1"); 
+    // console.log("getting selected by getElementById ::: " , btn1); 
+    //getElementByClassName() :::
+    // let btn3 = document.getElementsByClassName("btn-3");
+    // console.log("getting selected by getElementByClassName ::: " , btn3);
+    //querySelector :::
+    // let btn2 = document.querySelector("#btn-2");
+    // console.log("getting selected by querySelector ::: " , btn2);
+
+    let btn = document.querySelector("#btn-1");
+    //'click'  --> single click , 'dblclick'  --> double click
+    btn.addEventListener('click' , function() {    
+        let divElem = document.createElement("div");
+        divElem.innerText = "Hello";
+        let body = document.querySelector("body");
+        body.appendChild(divElem);
+    });
+    
+  </script>
+
+</html>

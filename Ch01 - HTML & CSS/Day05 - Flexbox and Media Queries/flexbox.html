@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FlexBox practice</title>
+
+    <style>
+
+        .container {
+            height: 700px;
+            background-color: peachpuff;
+            border: 3px solid black;
+            display: flex;
+            flex-direction: row;
+            /* flex-direction: column; */
+            /* justify-content works with Main Axis */
+            justify-content: start; 
+            /* align-items works with Cross Axis */ 
+            align-items: start;          
+            /* flex-wrap: wrap; */
+            align-content:start;
+            gap: 50px;
+        }
+        .box {
+            height: 200px;
+            width: 200px;
+            border: 2px solid brown;
+            margin: 10px;
+        }
+        .box1 {
+            background-color: aqua;
+            /* flex-shrink: 4; */
+        }
+        .box2 {
+            background-color: blueviolet;
+        }
+        .box3 {
+            background-color: darkolivegreen;
+            /* flex-grow: 4; */
+        }
+        .box4 {
+            background-color: fuchsia;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div class="box box1">Box 1</div>
+        <div class="box box2">Box 2</div>
+        <div class="box box3">Box 3</div>
+        <div class="box box4">Box 4</div>
+
+    </div>
+    
+</body>
+</html>
