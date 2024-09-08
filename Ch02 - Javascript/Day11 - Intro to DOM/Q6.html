@@ -109,7 +109,29 @@
       <p class="price" data-category="comedy">Rs 200</p>
     </div>
     <script>
-      // Q Make the filter work
+      // Q. Make the filter work
+
+      let dropdown = document.querySelector("select");
+
+      dropdown.addEventListener("change" , function() {
+        let filteredValue = dropdown.value;
+        console.log(filteredValue);
+
+        let allTickets = document.querySelectorAll(".price");
+        if (filteredValue == "none") {
+          for (let i = 0 ; i < allTickets.length ; i++) {
+            allTickets[i].parentElement.style.display = "block";
+          }
+        } else {
+          for (let i = 0 ; i < allTickets.length ; i++) {
+            if (allTickets[i].getAttribute("data-category") != filteredValue) {
+              allTickets[i].parentElement.style.display = "none";
+            } else {
+              allTickets[i].parentElement.style.display = "block";
+            }
+          }
+        }
+      });
      
     </script>
   </body>

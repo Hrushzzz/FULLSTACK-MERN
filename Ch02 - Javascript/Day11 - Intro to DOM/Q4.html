@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>DOM - Q4</title>
   </head>
   <body>
 
@@ -34,22 +34,30 @@
 
     // Q4 - Make "remove all" button work and make individual "delete" btn work :::
 
-    // task - 1 : "remove all" button should remove all tasks
+    // "Mouse Events"
+
     let myList = document.querySelector("ul");
     let AllListItems = myList.querySelectorAll("li");
-
     let removeButton = document.querySelector("#removeAll");
 
+    // task - 1 : "individual delete" button should remove that item
+    let allDeletebutton = document.querySelectorAll(".delete_button");
+    for (let i = 0 ; i < allDeletebutton.length ; i++) {
+      allDeletebutton[i].addEventListener("click" , function(e) {
+        // console.log(e);
+        e.currentTarget.parentElement.remove();
+      });
+    }
+
+    // task - 2 : "remove all" button should remove all tasks
     removeButton.addEventListener('click' , function() {
-        AllListItems = myList.querySelectorAll("li");
+        //AllListItems = myList.querySelectorAll("li");
         for (let i = 0 ; i < AllListItems.length ; i++) {
             myList.removeChild(AllListItems[i]);
         }
-
         //This can also be done through
         // myList.remove();
     });
-    
-  </script>
 
+  </script>
 </html>
