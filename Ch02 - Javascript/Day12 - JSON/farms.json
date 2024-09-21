@@ -1,0 +1,27 @@
+{
+  "FarmsData": [
+    {
+      "name": "Farm 1",
+      "location": "Hyderabad",
+      "products": ["bread", "butter", "cheese"],
+      "employees": 50,
+      "isOperational": true
+    },
+
+    {
+      "name": "Farm 2",
+      "location": "Bnagalore",
+      "products": ["milk", "curd", "ghee"],
+      "employees": 80,
+      "isOperational": false
+    },
+
+    {
+      "name": "Farm 3",
+      "location": "Chennai",
+      "products": ["Tomato", "Beans", "Cabbage"],
+      "employees": 10,
+      "isOperational": true
+    }
+  ]
+}
