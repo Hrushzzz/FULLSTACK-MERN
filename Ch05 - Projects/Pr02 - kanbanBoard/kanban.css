@@ -1,0 +1,119 @@
+* {
+    box-sizing: border-box;
+}
+body {
+    margin: 0;
+    padding: 0;
+}
+.toolbox-cont {
+    background-color: #4b4b4b;
+    height: 5rem;
+    display: flex;
+    align-items: center;
+}
+.toolbox-priority-cont {
+    width: 18rem;
+    height: 3.5rem;
+    background-color: #3d3d3d;
+    margin-left: 4rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+.color-box {
+    height: 1.5rem;
+    width: 3rem;
+}
+.lightpink {
+    background-color: lightpink;
+}
+.lightgreen {
+    background-color: lightgreen;
+}
+.lightblue {
+    background-color: lightblue;
+}
+.black {
+    background-color: black;
+}
+.action-btn-cnt {
+    width: 8rem;
+    height: 3.5rem;
+    background-color: #3d3d3d;
+    margin-left: 4rem;
+    display: flex;
+    
+}
+.action-btn-cnt>* {
+    display: flex;
+    color: white;
+    width: 50%;
+    align-items: center;
+    justify-content: space-evenly;
+    font-size: 1.8rem;
+    cursor: pointer;
+}
+.add-btn:hover {
+    font-size: 2.5rem;
+    background-color: #4BB543;
+}
+.remove-btn:hover {
+    font-size: 2.5rem;
+    background-color: red;
+}
+.main-cont {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    padding: 2rem;
+}
+.ticket-cont {
+    height: 12rem;
+    width: 15rem;
+    background-color: coral;
+}
+.ticket-color {
+    height: 1rem;
+    background-color: lightpink;
+}
+.ticket-id {
+    height: 2rem;
+    background-color: yellow;
+}
+.ticket-lock {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 4.6rem;
+    margin-right: 1rem;
+    font-size: 1.5rem;
+}
+.modal-cont {
+    height: 55vh;
+    width: 45vw;
+    display: flex;
+    position: absolute;
+    top: 30%;
+    left: 27%;
+}
+.textArea-cont {
+    height: 100%;
+    width: 75%;
+    background-color: #dfe4ea;
+    /* resize : none --> is used to not to expand the text area */
+    resize: none;
+    border: none;
+    outline: none;
+    font-size: 2rem;
+}
+.priority-colors-container {
+    background-color: #4b4b4b;
+    width: 25%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+.priority-color {
+    height: 3rem;
+    width: 6.8rem;
+}

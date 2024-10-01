@@ -1,11 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kanban Board</title>
+    <link rel="stylesheet" href="kanban.css">
 </head>
+
 <body>
-    
+
+    <!-- Tool box nav -->
+    <div class="toolbox-cont">
+        <!-- Color filters -->
+        <div class="toolbox-priority-cont">
+            <div class="lightpink color-box"></div>
+            <div class="lightgreen color-box"></div>
+            <div class="lightblue color-box"></div>
+            <div class="black color-box"></div>
+        </div>
+
+        <!-- Action buttons -->
+        <div class="action-btn-cnt">
+            <div class="add-btn">
+                <i class="fa-solid fa-plus"></i>
+            </div>
+
+            <div class="remove-btn">
+                <i class="fa-solid fa-trash"></i>
+            </div>
+
+        </div>
+    </div>
+
+
+    <!-- Tickets -->
+    <!-- <div class="main-cont">
+        <div class="ticket-cont">
+            <div class="ticket-color">
+
+            </div>
+
+            <div class="ticket-id">
+                1234
+            </div>
+
+            <div class="ticket-task">
+                demo task 1
+            </div>
+
+            <div class="ticket-lock">
+                <i class="fa-solid fa-lock"></i>    
+            </div>
+
+        </div>
+    </div> -->
+
+
+    <!-- Task modal -->
+     <div class="modal-cont">
+        <textarea placeholder="Enter your Task" class="textArea-cont"></textarea>
+
+        <div class="priority-colors-container">
+
+            <div class="lightpink priority-color"></div>
+            <div class="lightgreen priority-color"></div>
+            <div class="lightblue priority-color"></div>
+            <div class="black priority-color"></div>
+
+        </div>
+     </div>
+
 </body>
+<script src="https://kit.fontawesome.com/054c9b50fd.js" crossorigin="anonymous"></script>
+<script src="kanban.js"></script>
+
 </html>
