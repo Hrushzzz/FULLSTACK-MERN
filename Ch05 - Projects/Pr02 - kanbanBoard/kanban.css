@@ -90,7 +90,7 @@ body {
 .modal-cont {
     height: 55vh;
     width: 45vw;
-    display: flex;
+    display: none;
     position: absolute;
     top: 30%;
     left: 27%;
@@ -116,4 +116,7 @@ body {
 .priority-color {
     height: 3rem;
     width: 6.8rem;
+}
+.active {
+    border: 5px solid lightsalmon;
 }
