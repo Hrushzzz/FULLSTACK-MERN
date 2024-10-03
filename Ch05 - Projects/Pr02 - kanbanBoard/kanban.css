@@ -74,7 +74,7 @@ body {
 }
 .ticket-color {
     height: 1rem;
-    background-color: lightpink;
+    background-color: none;
 }
 .ticket-id {
     height: 2rem;
