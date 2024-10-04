@@ -1,4 +1,5 @@
 let addBtn = document.querySelector(".add-btn");
+let removeBtn = document.querySelector(".remove-btn");
 let modalCont = document.querySelector(".modal-cont");
 let mainCont = document.querySelector(".main-cont");
 let textAreaCont = document.querySelector(".textArea-cont");
@@ -6,6 +7,7 @@ let allPriorityColors = document.querySelectorAll(".priority-color");
 // console.log(allPriorityColors);
 
 let addTaskFlag = false;
+let removeTaskFlag = false;
 
 let modalPriorityColor = "lightpink";
 
@@ -69,7 +71,8 @@ function createTicket(ticketTask , ticketColorClass) {
             mainCont.appendChild(ticketCont);
             modalCont.style.display = "none";
 
-            handleLock(ticketCont);
+            handleLock(ticketCont);   //lock
+            handleRemoval(ticketCont);   //ticket removal
 }
 
 // handling Lock
@@ -91,5 +94,28 @@ function handleLock(ticket) {
             ticketLockIcon.classList.add(lockClass);
             ticketTaskArea.setAttribute("contenteditable" , "false");
         }
+    });
+}
+
+// handling removal of ticket
+removeBtn.addEventListener("click" , function() {
+    removeTaskFlag = !removeTaskFlag;
+
+    if (removeTaskFlag === true) {
+        alert("Delete button Activated");
+        removeBtn.style.color = "red";
+    } else {
+        alert("Delete button Deactivated");
+        removeBtn.style.color = "white";
+    }
+});
+
+function handleRemoval(ticket) {
+    ticket.addEventListener("click" , function() {
+        if (!removeTaskFlag) {
+            //console.log("Flag is ::: " , removeTaskFlag);
+            return;
+        }
+        ticket.remove();
     });
 }

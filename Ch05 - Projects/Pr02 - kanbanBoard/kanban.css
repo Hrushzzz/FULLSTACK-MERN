@@ -59,7 +59,7 @@ body {
 }
 .remove-btn:hover {
     font-size: 2.5rem;
-    background-color: red;
+    background-color: #4BB543;
 }
 .main-cont {
     display: flex;
