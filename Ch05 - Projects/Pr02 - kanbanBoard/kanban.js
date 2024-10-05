@@ -6,6 +6,8 @@ let textAreaCont = document.querySelector(".textArea-cont");
 let allPriorityColors = document.querySelectorAll(".priority-color");
 // console.log(allPriorityColors);
 
+let colors = ["lightpink" , "lightgreen" , "lightblue" , "black"];
+
 let addTaskFlag = false;
 let removeTaskFlag = false;
 
@@ -52,7 +54,7 @@ allPriorityColors.forEach(function(colorElem) {
 function createTicket(ticketTask , ticketColorClass) {
     let ticketCont = document.createElement("div");
     ticketCont.setAttribute("class" , "ticket-cont");
-    ticketCont.innerHTML = `<div class="ticket-color ${ticketColorClass}">
+    ticketCont.innerHTML = `<div class="ticket-color-cont ${ticketColorClass}">
 
             </div>
 
@@ -73,6 +75,7 @@ function createTicket(ticketTask , ticketColorClass) {
 
             handleLock(ticketCont);   //lock
             handleRemoval(ticketCont);   //ticket removal
+            handleColor(ticketCont);   //changing color bands
 }
 
 // handling Lock
@@ -117,5 +120,26 @@ function handleRemoval(ticket) {
             return;
         }
         ticket.remove();
+    });
+}
+
+// handle color band
+function handleColor(ticket) {
+    let ticketColorBand = ticket.querySelector(".ticket-color-cont");
+    ticketColorBand.addEventListener("click" , function() {
+        let currentColor = ticketColorBand.classList[1];
+        //console.log("current color is ::: " , currentColor);
+
+        let currentColorIdx = colors.findIndex(function(color) {
+            return currentColor === color;
+        });
+        //console.log("currentColorIndex is ::: " , currentColorIdx , currentColor);
+        currentColorIdx++;
+
+        let newTicketColorIdx = currentColorIdx % colors.length;
+        let newTicketColorValue = colors[newTicketColorIdx];
+
+        ticketColorBand.classList.remove(currentColor);
+        ticketColorBand.classList.add(newTicketColorValue);
     });
 }
