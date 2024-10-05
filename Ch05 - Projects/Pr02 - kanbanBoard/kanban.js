@@ -8,6 +8,8 @@ let allPriorityColors = document.querySelectorAll(".priority-color");
 
 let colors = ["lightpink" , "lightgreen" , "lightblue" , "black"];
 
+let toolbarColors = document.querySelectorAll(".color-box");
+
 let addTaskFlag = false;
 let removeTaskFlag = false;
 
@@ -15,6 +17,8 @@ let modalPriorityColor = "lightpink";
 
 let lockClass = "fa-lock";
 let unlockClass = "fa-lock-open";
+
+let ticketsArr = [];
 
 addBtn.addEventListener("click" , function() {
     addTaskFlag = !addTaskFlag;
@@ -52,6 +56,8 @@ allPriorityColors.forEach(function(colorElem) {
 
 // This function generates a ticket
 function createTicket(ticketTask , ticketColorClass) {
+    let id = shortid();   //generates unique id for tickets (created from shortid cdn)
+    // console.log("ID is ::: " , id);
     let ticketCont = document.createElement("div");
     ticketCont.setAttribute("class" , "ticket-cont");
     ticketCont.innerHTML = `<div class="ticket-color-cont ${ticketColorClass}">
@@ -59,7 +65,7 @@ function createTicket(ticketTask , ticketColorClass) {
             </div>
 
             <div class="ticket-id">
-                1234
+                ${id}
             </div>
 
             <div class="ticket-task">
@@ -143,3 +149,19 @@ function handleColor(ticket) {
         ticketColorBand.classList.add(newTicketColorValue);
     });
 }
+
+// Get tasks based on color filter
+for (let i = 0 ; i < toolbarColors.length ; i++) {
+    toolbarColors[i].addEventListener("click" , function() {
+        // console.log(toolbarColors[i].classList[0]);
+        let selectedToolboxColor = toolbarColors[i].classList[0];
+
+        let allTickets = document.querySelectorAll(".ticket-cont");
+        console.log(allTickets);
+
+        for (let i = 0 ; i < allTickets.length ; i++) {
+            allTickets[i].remove();
+        }
+    });
+}
+
