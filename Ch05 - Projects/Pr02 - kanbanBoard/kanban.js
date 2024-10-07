@@ -55,8 +55,8 @@ allPriorityColors.forEach(function(colorElem) {
 });
 
 // This function generates a ticket
-function createTicket(ticketTask , ticketColorClass) {
-    let id = shortid();   //generates unique id for tickets (created from shortid cdn)
+function createTicket(ticketTask , ticketColorClass , ticketID) {
+    let id = ticketID || shortid();   //generates unique id for tickets (created from shortid cdn)
     // console.log("ID is ::: " , id);
     let ticketCont = document.createElement("div");
     ticketCont.setAttribute("class" , "ticket-cont");
@@ -82,6 +82,11 @@ function createTicket(ticketTask , ticketColorClass) {
             handleLock(ticketCont);   //lock
             handleRemoval(ticketCont);   //ticket removal
             handleColor(ticketCont);   //changing color bands
+
+            if (!ticketID) {
+                ticketsArr.push({ticketTask , ticketColorClass , ticketID:id});
+            }
+            console.log(ticketsArr);
 }
 
 // handling Lock
@@ -156,12 +161,20 @@ for (let i = 0 ; i < toolbarColors.length ; i++) {
         // console.log(toolbarColors[i].classList[0]);
         let selectedToolboxColor = toolbarColors[i].classList[0];
 
+        let filteredTickets = ticketsArr.filter(function(ticket) {
+            return selectedToolboxColor === ticket.ticketColorClass;
+        });
+        console.log(filteredTickets);
+
         let allTickets = document.querySelectorAll(".ticket-cont");
-        console.log(allTickets);
+        // console.log(allTickets);
 
         for (let i = 0 ; i < allTickets.length ; i++) {
             allTickets[i].remove();
         }
+
+        filteredTickets.forEach(function(filteredTicket) {
+            createTicket(filteredTicket.ticketTask , filteredTicket.ticketColorClass , filteredTicket.ticketID);
+        });
     });
 }
-
