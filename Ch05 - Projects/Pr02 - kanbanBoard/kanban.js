@@ -48,6 +48,9 @@ modalCont.addEventListener("keydown" , function(e) {
     if (key === "Shift") {
         // console.log("ticket created");
         createTicket(textAreaCont.value , modalPriorityColor);
+
+        modalCont.style.display = 'none';
+        textAreaCont.value = "";
     }
 });
 
@@ -93,8 +96,8 @@ function createTicket(ticketTask , ticketColorClass , ticketID) {
             modalCont.style.display = "none";
 
             handleLock(ticketCont , id);   //lock
-            handleRemoval(ticketCont);   //ticket removal
-            handleColor(ticketCont);   //changing color bands
+            handleRemoval(ticketCont , id);   //ticket removal
+            handleColor(ticketCont , id);   //changing color bands
 
             if (!ticketID) {
                 ticketsArr.push({ticketTask , ticketColorClass , ticketID:id});
@@ -151,21 +154,26 @@ removeBtn.addEventListener("click" , function() {
 });
 
 
-function handleRemoval(ticket) {
+function handleRemoval(ticket , id) {
     ticket.addEventListener("click" , function() {
         if (!removeTaskFlag) {
             //console.log("Flag is ::: " , removeTaskFlag);
             return;
         }
+
+        let idx = getIdx(id);
         ticket.remove();
+        ticketsArr.splice(idx , 1);
+        localStorage.setItem("tickets" , JSON.stringify(ticketsArr));
     });
 }
 
 
 // handle color band
-function handleColor(ticket) {
+function handleColor(ticket , id) {
     let ticketColorBand = ticket.querySelector(".ticket-color-cont");
     ticketColorBand.addEventListener("click" , function() {
+        let ticketIdx = getIdx(id);
         let currentColor = ticketColorBand.classList[1];
         //console.log("current color is ::: " , currentColor);
 
@@ -180,6 +188,9 @@ function handleColor(ticket) {
 
         ticketColorBand.classList.remove(currentColor);
         ticketColorBand.classList.add(newTicketColorValue);
+
+        ticketsArr[ticketIdx].ticketColorClass = newTicketColorValue;
+        localStorage.setItem("tickets" , JSON.stringify(ticketsArr));
     });
 }
 
