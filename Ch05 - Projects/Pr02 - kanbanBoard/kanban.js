@@ -188,6 +188,9 @@ function handleLock(ticket , id){
       if(ticketLockIcon.classList.contains(lockClass)){
           ticketLockIcon.classList.remove(lockClass);
           ticketLockIcon.classList.add(unlockClass);
+
+        // We should be allowed to edit when this unlock class is appended...
+        //For this we use ***"contenteditable"*** method --> this is used to edit a content within a text area...
           ticketTaskArea.setAttribute('contenteditable' , 'true');
         } else {
         ticketLockIcon.classList.remove(unlockClass);
