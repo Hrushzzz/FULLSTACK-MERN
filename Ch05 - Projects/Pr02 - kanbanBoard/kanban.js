@@ -20,6 +20,16 @@ let unlockClass = "fa-lock-open";
 
 let ticketsArr = [];
 
+
+if (localStorage.getItem("tickets")) {
+    ticketsArr = JSON.parse(localStorage.getItem("tickets"));
+
+    ticketsArr.forEach(function(ticket) {
+        createTicket(ticket.ticketTask , ticket.ticketColorClass , ticket.ticketID);
+    });
+}
+
+
 addBtn.addEventListener("click" , function() {
     addTaskFlag = !addTaskFlag;
     // console.log(addTaskFlag);
@@ -31,6 +41,7 @@ addBtn.addEventListener("click" , function() {
     }
 });
 
+
 modalCont.addEventListener("keydown" , function(e) {
     let key = e.key;
     // console.log(key);
@@ -39,6 +50,7 @@ modalCont.addEventListener("keydown" , function(e) {
         createTicket(textAreaCont.value , modalPriorityColor);
     }
 });
+
 
 // Add tasks according to Active color
 allPriorityColors.forEach(function(colorElem) {
@@ -53,6 +65,7 @@ allPriorityColors.forEach(function(colorElem) {
         // console.log("color ::: " , modalPriorityColor);
     });
 });
+
 
 // This function generates a ticket
 function createTicket(ticketTask , ticketColorClass , ticketID) {
@@ -79,23 +92,32 @@ function createTicket(ticketTask , ticketColorClass , ticketID) {
             mainCont.appendChild(ticketCont);
             modalCont.style.display = "none";
 
-            handleLock(ticketCont);   //lock
+            handleLock(ticketCont , id);   //lock
             handleRemoval(ticketCont);   //ticket removal
             handleColor(ticketCont);   //changing color bands
 
             if (!ticketID) {
                 ticketsArr.push({ticketTask , ticketColorClass , ticketID:id});
+
+                // BY default , Javascript will not allow us to read the data from localStorage,
+                // so we use "JSON.stringify" to convert the data in form of a string and then read.
+                // We will not be able to read the data in the form of Object or an Array.
+                localStorage.setItem("tickets" , JSON.stringify(ticketsArr));
             }
-            console.log(ticketsArr);
+            // console.log(ticketsArr);
 }
 
+
 // handling Lock
-function handleLock(ticket) {
+function handleLock(ticket , id) {
     let ticketLockElem = ticket.querySelector(".ticket-lock");
     let ticketTaskArea = document.querySelector(".ticket-task");
 
     let ticketLockIcon = ticketLockElem.children[0];
     ticketLockIcon.addEventListener("click" , function() {
+        let ticketIdx = getIdx(id);
+        console.log(ticketIdx);
+
         if (ticketLockIcon.classList.contains(lockClass)) {
             ticketLockIcon.classList.remove(lockClass);
             ticketLockIcon.classList.add(unlockClass);
@@ -108,8 +130,12 @@ function handleLock(ticket) {
             ticketLockIcon.classList.add(lockClass);
             ticketTaskArea.setAttribute("contenteditable" , "false");
         }
+
+        ticketsArr[ticketIdx].ticketTask = ticketTaskArea.innerText;
+        localStorage.setItem("tickets" , JSON.stringify(ticketsArr));
     });
 }
+
 
 // handling removal of ticket
 removeBtn.addEventListener("click" , function() {
@@ -124,6 +150,7 @@ removeBtn.addEventListener("click" , function() {
     }
 });
 
+
 function handleRemoval(ticket) {
     ticket.addEventListener("click" , function() {
         if (!removeTaskFlag) {
@@ -133,6 +160,7 @@ function handleRemoval(ticket) {
         ticket.remove();
     });
 }
+
 
 // handle color band
 function handleColor(ticket) {
@@ -154,6 +182,7 @@ function handleColor(ticket) {
         ticketColorBand.classList.add(newTicketColorValue);
     });
 }
+
 
 // Get tasks based on color filter
 for (let i = 0 ; i < toolbarColors.length ; i++) {
@@ -177,4 +206,12 @@ for (let i = 0 ; i < toolbarColors.length ; i++) {
             createTicket(filteredTicket.ticketTask , filteredTicket.ticketColorClass , filteredTicket.ticketID);
         });
     });
+}
+
+
+function getIdx(id) {
+    let ticketIdx = ticketsArr.findIndex(function(ticketObj) {
+        return ticketObj.ticketID === id;
+    });
+    return ticketIdx;
 }
