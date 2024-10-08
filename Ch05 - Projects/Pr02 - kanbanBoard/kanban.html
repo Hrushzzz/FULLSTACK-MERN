@@ -1,65 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kanban Board</title>
-    <link rel="stylesheet" href="kanban.css">
+    <title>Kanaban Board Demo</title>
+    <link rel="stylesheet" href="./kanban.css">
+    <script src="https://kit.fontawesome.com/589957875e.js" crossorigin="anonymous"></script>
 </head>
-
 <body>
-
-    <!-- Tool box nav -->
+    
+    <!-- Toolbox (Navbar) -->
     <div class="toolbox-cont">
-        <!-- Color filters -->
         <div class="toolbox-priority-cont">
-            <div class="lightpink color-box"></div>
-            <div class="lightgreen color-box"></div>
-            <div class="lightblue color-box"></div>
-            <div class="black color-box"></div>
+            <div class="lightpink color"></div>
+            <div class="lightgreen color"></div>
+            <div class="lightblue color"></div>
+            <div class="black color"></div>
         </div>
 
         <!-- Action buttons -->
-        <div class="action-btn-cnt">
+        <div class="action-btn-cont">
+
             <div class="add-btn">
                 <i class="fa-solid fa-plus"></i>
             </div>
 
-            <div class="remove-btn">
-                <i class="fa-solid fa-trash"></i>
-            </div>
-
+           <div class="remove-btn">
+            <i class="fa-solid fa-xmark"></i>
+           </div>
         </div>
     </div>
 
 
-    <!-- Tickets -->
+    <!-- Task Ticket -->
+
     <div class="main-cont">
-        <!-- <div class="ticket-cont">
-            <div class="ticket-color-cont">
-
-            </div>
-
-            <div class="ticket-id">
-                1234
-            </div>
-
-            <div class="ticket-task">
-                demo task 1
-            </div>
-
-            <div class="ticket-lock">
-                <i class="fa-solid fa-lock"></i>    
-            </div>
-
-        </div> -->
+         <!-- <div class="ticket-cont">
+             <div class="ticket-color"></div>
+             <div class="ticket-id">12345</div>
+             <div class="task-area" contenteditable="false">Random Task</div>
+              <div class="ticket-lock">
+                <i class="fa-solid fa-lock"></i>
+              </div>
+         </div> -->         
     </div>
 
 
-    <!-- Task modal -->
-     <div class="modal-cont">
-        <textarea placeholder="Enter your Task" class="textArea-cont"></textarea>
+    <!-- Modal Task Area -->
+
+    <div class="modal-cont">
+        <textarea class="textArea-cont" placeholder="Enter Your Task"></textarea>
 
         <div class="priority-colors-container">
 
@@ -69,10 +60,9 @@
             <div class="black priority-color active"></div>
 
         </div>
-     </div>
+    </div>
 
-</body>
-<script src="kanban.js"></script>
-<script src="https://kit.fontawesome.com/054c9b50fd.js" crossorigin="anonymous"></script>
 <script src="https://unpkg.com/shortid-dist@1.0.5/dist/shortid-2.2.13.min.js"></script>
+<script src="./kanban.js"></script>
+</body>
 </html>

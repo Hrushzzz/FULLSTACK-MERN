@@ -1,122 +1,135 @@
-* {
+*{
     box-sizing: border-box;
 }
-body {
+body{
     margin: 0;
     padding: 0;
 }
-.toolbox-cont {
-    background-color: #4b4b4b;
+.toolbox-cont{
     height: 5rem;
+    background-color: #4b4b4b;
     display: flex;
     align-items: center;
 }
-.toolbox-priority-cont {
-    width: 18rem;
-    height: 3.5rem;
-    background-color: #3d3d3d;
+.toolbox-cont > *{
     margin-left: 4rem;
+}
+.toolbox-priority-cont{
+    height: 3.5rem;
+    width: 18rem;
+    background-color:#3d3d3d;
     display: flex;
     align-items: center;
     justify-content: space-evenly;
 }
-.color-box {
+.toolbox-priority-cont>*:hover{
+    background-color: #485460;
+}
+.color{
     height: 1.5rem;
     width: 3rem;
 }
-.lightpink {
+.lightpink{
     background-color: lightpink;
 }
-.lightgreen {
+.lightgreen{
     background-color: lightgreen;
 }
-.lightblue {
+.lightblue{
     background-color: lightblue;
 }
-.black {
+.black{
     background-color: black;
 }
-.action-btn-cnt {
-    width: 8rem;
+.action-btn-cont{
     height: 3.5rem;
-    background-color: #3d3d3d;
-    margin-left: 4rem;
+    width: 8rem;
+    background-color:#3d3d3d ;
     display: flex;
-    
 }
-.action-btn-cnt>* {
+.action-btn-cont>*{
     display: flex;
-    color: white;
     width: 50%;
+    font-size: 2rem;
+    color: white;
+    justify-content: center;
     align-items: center;
-    justify-content: space-evenly;
-    font-size: 1.8rem;
-    cursor: pointer;
 }
-.add-btn:hover {
-    font-size: 2.5rem;
+.add-btn:hover{
+ background-color: #4BB543;
+ }
+ .remove-btn:hover{
     background-color: #4BB543;
+ }
+.modal-cont{
+   height: 50vh;
+   width: 45vw;
+   display: flex;
+   background-color: lightsalmon;
+   position: absolute;
+   top:30%;
+   left: 27%;
+   display: none;
 }
-.remove-btn:hover {
-    font-size: 2.5rem;
-    background-color: #4BB543;
-}
-.main-cont {
-    display: flex;
-    gap: 2rem;
+.main-cont{
+    display: flex; 
+    gap:2rem;
     justify-content: center;
     padding: 2rem;
+    flex-wrap: wrap;
 }
-.ticket-cont {
-    height: 12rem;
+.ticket-cont{
+    height: 13rem;
     width: 15rem;
     background-color: coral;
 }
-.ticket-color-cont {
+.ticket-color{
     height: 1rem;
-    background-color: none;
 }
-.ticket-id {
-    height: 2rem;
+.ticket-id{
     background-color: yellow;
+    height: 2rem;
 }
-.ticket-lock {
+.ticket-lock{
     display: flex;
     justify-content: flex-end;
-    margin-top: 4.6rem;
-    margin-right: 1rem;
+    margin-top: 90px;
+    margin-right: 7px;
     font-size: 1.5rem;
 }
-.modal-cont {
-    height: 55vh;
+.modal-cont{
+    height: 50vh;
     width: 45vw;
-    display: none;
-    position: absolute;
-    top: 30%;
-    left: 27%;
-}
-.textArea-cont {
-    height: 100%;
-    width: 75%;
-    background-color: #dfe4ea;
-    /* resize : none --> is used to not to expand the text area */
-    resize: none;
-    border: none;
-    outline: none;
-    font-size: 2rem;
-}
-.priority-colors-container {
-    background-color: #4b4b4b;
-    width: 25%;
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-evenly;
-}
-.priority-color {
-    height: 3rem;
-    width: 6.8rem;
-}
-.active {
-    border: 5px solid lightsalmon;
-}
+    background-color: lightsalmon;
+    position: absolute;
+    top:30%;
+    left: 27%;
+    display: none;
+ }
+ .textArea-cont{
+     height: 100%;
+     width: 75%;
+     resize: none;
+     outline: none;
+     border: none;
+     background-color: #dfe4ea;
+     font-size: 2rem;
+     color: black;
+ }
+ .priority-colors-container{
+     height: 100%;
+     width: 25%;
+     display: flex;
+     flex-direction: column;
+     background-color: #4b4b4b;
+     align-items: center;
+     justify-content: space-around;
+ }
+ .priority-color{
+     height: 3rem;
+     width: 5rem;
+ }
+ .active{
+     border: 5px solid lightsalmon;
+ }
