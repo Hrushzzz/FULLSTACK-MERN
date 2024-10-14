@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Propogation</title>
+</head>
+
+<style>
+    div {
+        min-height: 100px;
+        min-width: 100px;
+        padding: 20px;
+        border: 2px solid black;
+    }
+</style>
+
+<body>
+    <div class="grandParent margin">
+        <div class="parent">
+            <div class="child">
+
+            </div>
+        </div>
+    </div>
+</body>
+
+<script>
+
+    // Event Bubbling ::: 
+    // Event bubbling describes the way an event travels from the target element where it occurred,
+    // up through its parent elements in the DOM hierarchy.
+
+    // The event is first handled by the innermost element where it occurred.
+    // Then it's handled by that element's parent.
+    // This continues up the DOM tree until it reaches the topmost element.
+
+    // Event bubbling is one of the phases of event propagation in the DOM.
+    // When an event occurs on a DOM element, 
+    // it first triggers the event handlers on the target element itself, 
+    // then it bubbles up to its parent elements in the DOM hierarchy. 
+    // This allows for the creation of more general event listeners 
+    // that can be applied to parent elements to handle events from multiple child elements.
+
+    let grandParent = document.querySelector(".grandParent");
+    grandParent.addEventListener("click" , function() {
+        console.log("Grand parent clicked...");
+    } , true);  //useCapture flag
+
+    let parent = document.querySelector(".parent");
+    parent.addEventListener("click" , function() {
+        console.log("Parent clicked...");
+    } , true);
+
+    let child = document.querySelector(".child");
+    child.addEventListener("click" , function() {
+        console.log("Child clicked...");
+    } , false);
+
+    // Captured Phase (Trickling) :::
+    // The event starts from the root of the DOM tree and moves down to the target element.
+
+    //By default , Bubbling is occured , but when we pass "true" , then it will act as a Captured Event.
+
+</script>
+
+</html>
