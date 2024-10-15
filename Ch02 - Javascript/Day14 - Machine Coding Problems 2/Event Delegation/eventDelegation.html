@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Delegation
+    </title>
+</head>
+<body>
+    <div id="categories">
+            <li id="headphones">Headphones</li>
+            <li id="television">Television</li>
+            <li id="furniture">Furniture</li>
+            <li id="laptops">Laptops</li>
+    </div>
+</body>
+
+<script>
+
+    let categories = document.querySelector("#categories");
+    categories.addEventListener("click" , function(e) {
+        console.log(e.target.innerText);
+    });
+
+    // let headphones = document.querySelector("#headphones");
+    // headphones.addEventListener("click" , function(){
+    //     console.log("Headphones clicked..");
+    // });
+    
+    // let television = document.querySelector("#television");
+    // television.addEventListener("click" , function(){
+    //     console.log("Television clicked..");
+    // });
+
+    // let furniture = document.querySelector("#furniture");
+    // furniture.addEventListener("click" , function(){
+    //     console.log("Furniture clicked..");
+    // });
+
+    // let laptops = document.querySelector("#laptops");
+    // laptops.addEventListener("click" , function(){
+    //     console.log("Laptops clicked..");
+    // });
+
+</script>
+
+<!-- Event delegation is a technique in JavaScript for handling events efficiently,
+  especially when you have multiple elements that need similar event handling.
+
+Instead of attaching event listeners to individual elements,
+you attach a single listener to a parent element.
+When an event occurs on a child element, it bubbles up through the DOM tree.
+
+The parent's event listener catches the event and can determine which child element triggered it.
+You can then handle the event appropriately based on which child was clicked.
+
+This approach has several benefits:
+-> Improved performance, especially with many similar elements
+-> Dynamically added elements are automatically handled
+-> Less memory usage due to fewer event listeners -->
+
+</html>
