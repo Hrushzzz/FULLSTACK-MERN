@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>setTimeout method</title>
+
+    <style>
+        div {
+            height: 250px;
+            width: 300px;
+            background-color: darkgoldenrod;
+            border: 3px solid black;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div>
+        I am the box..
+    </div>
+
+    <button onclick=stopAnimation()>Stop Animation</button>
+    
+</body>
+
+<script>
+    // setTimeout is a function in JavaScript used to schedule the execution of code after a specified delay.
+
+    // function sayHello() {
+    //     console.log("Hello Hrishi");
+    // }
+    // setTimeout(sayHello , 4000);
+
+    function startAnimation() {
+        let target = document.querySelector("div");
+        target.style.width = "500px";
+    }
+    
+    let id1 = setTimeout(startAnimation , 5000);
+
+
+    function startAnimation2() {
+        let target = document.querySelector("div");
+        target.style.width = "800px";
+    }
+    
+    let id2 = setTimeout(startAnimation2 , 8000);
+
+    console.log("first setTimeout id ::: " , id1);
+    console.log("second setTimeout id ::: " , id2);
+
+
+    // clearTimeout is a built-in JavaScript function used to cancel a timeout previously established by calling setTimeout.
+
+    function stopAnimation() {
+        clearTimeout(id1);
+    }
+
+
+</script>
+
+</html>
