@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Debouncing and Throttling</title>
+</head>
+
+<body>
+    <input type="text">
+</body>
+
+<script>
+    //Type 01 ::: example of creation of Network logs for each key down action,
+    //which causes performance issues for our application
+    
+    let count = 0;
+    function work() {
+        console.log("Network Request" , count);
+        count++;
+    }
+
+    let input = document.querySelector("input");
+    // input.addEventListener("keydown" , work);
+
+
+    //Type 02 ::: Using Debouncing
+    function debounce(work , delay) {
+        let timerId;
+        return function optWorkFn() {
+            console.log(timerId);
+            clearTimeout(timerId);
+            timerId = setTimeout(function() {
+                work();
+            } , delay);
+        };
+    }
+
+    let optimizedFn = debounce(work , 5000);
+    input.addEventListener("keydown" , optimizedFn);
+
+
+</script>
+
+</html>
