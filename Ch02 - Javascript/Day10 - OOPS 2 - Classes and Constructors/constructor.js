@@ -22,10 +22,11 @@ function Pizza(Toppings , Size , Crust) {
     this.crust = Crust;
 
     this.describe = function() {
-        console.log(`This pizza has ${this.toppings} of ${this.size} size and crust is ${this.crust}`);
+        console.log(`This pizza has topping as ${this.toppings} and is of ${this.size} size and its crust is ${this.crust}`);
     }
 }
 
+//Object Creation
 let Pizza1 = new Pizza(["cheese" , "corn" , "tomato"] , "medium" , "thin");
 let Pizza2 = new Pizza(["onion" , "mayo" , "capsicum"] , "small" , "thick");
 
