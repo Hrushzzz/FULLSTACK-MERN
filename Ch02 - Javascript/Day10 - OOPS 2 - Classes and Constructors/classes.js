@@ -1,3 +1,5 @@
+// *** Creating a Class ***
+
 class Pizza {
     //constructor method
     constructor(toppings , size , crust) {
@@ -15,3 +17,17 @@ const Pizza1 = new Pizza("cheese" , "medium" , "thin");
 console.log(Pizza1);
 
 Pizza1.describe();
+
+
+// *** Inheritance ***
+
+class StuffedPizza extends Pizza{
+    constructor(toppings , size , crust , stuffing) {
+        super(toppings , size , crust);
+        this.stuffing = stuffing;
+    }
+}
+
+
+const Pizza2 = new StuffedPizza("butter" , "large" , "thick" , "cheese and garlic");
+console.log(Pizza2);
