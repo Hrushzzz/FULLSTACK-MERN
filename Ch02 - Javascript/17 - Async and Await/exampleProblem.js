@@ -45,11 +45,15 @@ function giveFeedback() {
 
 
 async function executeTasks() {
-    await prepareIngredients();   // 20 sec
-    await cookDish();   // 10 sec
-    await serveDish();   // 5 sec
-    await cleanUp();   // 5 sec
-    await giveFeedback();   // 5 sec
+    try {
+      await prepareIngredients(); // 20 sec
+      await cookDish(); // 10 sec
+      await serveDish(); // 5 sec
+      await cleanUp(); // 5 sec
+      await giveFeedback(); // 5 sec
+    } catch (error) {
+      console.log(error);
+    }
 }
 
 executeTasks();
