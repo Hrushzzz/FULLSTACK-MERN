@@ -2,35 +2,34 @@ const originalObj = {
     name: "Hrishi",
     age: 25,
     details: {
-        hometown: "Kurnool",
+      hometown: "Kurnool",
+      favColor: "Black",
     },
-    hobbies: ["cricket" , "football" , "movies"]
-}
-
-
-function deepClone(obj) {
-    let isArr = Array.isArray(obj);
-    let copy = isArr ? [] : {};
-    for (let key in obj) {
-        if (Array.isArray(obj[key])) {
-            copy[key] = [...obj][key];
-            for (let i = 0 ; i < copy[key].length ; i++) {
-                if (copy[key][i] == "object") {
-                    copy[key][i] = deepClone(obj[key][i]);
-                }
-            }
-        } else if (typeof obj[key] == "object") {
-            copy[key] = deepClone(obj[key]);
+    hobbies: ["cricket", "football", "movies"],
+    // greet() {
+    //     console.log(`Hello, my name is ${this.name}!`);
+    // }
+  };
+  
+  function deepClone(obj) {
+    const isArray = Array.isArray(obj);
+    let cloning = isArray ? [] : {};
+    for (let prop in obj) {
+      if (obj.hasOwnProperty(prop)) {   // prop is a part of object and not of prototype or inherited.
+        if (typeof obj[prop] === "object") {
+          cloning[prop] = deepClone(obj[prop]);
         } else {
-            copy[key] = obj[key];
+            cloning[prop] = obj[prop];
         }
+      }
     }
-    return copy;
-}
-
+    return cloning;
+  }
+  
 let deepCopiedObj = deepClone(originalObj);
 
-deepCopiedObj.details.hometown = "Hyderabad";
+console.log("originalObj ::: ", originalObj);
 
-console.log("originalObj ::: " , originalObj);
-console.log("deepCopiedObj ::: " , deepCopiedObj);
+console.log(deepCopiedObj == originalObj);
+deepCopiedObj.details.hometown = "Hyderabad";
+console.log("deepCopiedObj ::: ", deepCopiedObj);
