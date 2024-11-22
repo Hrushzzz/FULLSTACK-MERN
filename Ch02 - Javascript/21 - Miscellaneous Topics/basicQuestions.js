@@ -160,14 +160,43 @@
 
 // => Q11.    ==> output: Hmm.. You don't have an age I guess
 
-function checkAge(data) {
-  if (data === { age: 18 }) {
-    console.log('You are an adult!');
-  } else if (data == { age: 18 }) {
-    console.log('You are still an adult.');
-  } else {
-    console.log(`Hmm.. You don't have an age I guess`);
-  }
-}
+// function checkAge(data) {
+//   if (data === { age: 18 }) {
+//     console.log('You are an adult!');
+//   } else if (data == { age: 18 }) {
+//     console.log('You are still an adult.');
+//   } else {
+//     console.log(`Hmm.. You don't have an age I guess`);
+//   }
+// }
   
-checkAge({ age: 18 });
+// checkAge({ age: 18 });
+
+//------------------------------------------------------------------------------------//
+
+// => Q12.
+
+// const person = { name: 'Hrishi' };
+
+// function sayHi(age) {
+//   return `${this.name} is ${age}`;
+// }
+
+// console.log(sayHi.call(person, 25));
+// console.log(sayHi.bind(person, 25));
+// let fn=sayHi.bind(person, 25)
+// console.log(fn());
+
+//------------------------------------------------------------------------------------//
+
+// => Q13. 
+
+const firstPromise = new Promise((res, rej) => {
+  setTimeout(res, 500, 'one');
+});
+
+const secondPromise = new Promise((res, rej) => {
+  setTimeout(res, 100, 'two');
+});
+
+Promise.race([firstPromise, secondPromise]).then(res => console.log(res));
