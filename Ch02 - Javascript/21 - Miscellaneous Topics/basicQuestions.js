@@ -189,14 +189,72 @@
 
 //------------------------------------------------------------------------------------//
 
-// => Q13. 
+// => Q13.     ==> output: "two"
 
-const firstPromise = new Promise((res, rej) => {
-  setTimeout(res, 500, 'one');
-});
+// const firstPromise = new Promise((res, rej) => {
+//   setTimeout(res, 500, 'one');
+// });
 
-const secondPromise = new Promise((res, rej) => {
-  setTimeout(res, 100, 'two');
-});
+// const secondPromise = new Promise((res, rej) => {
+//   setTimeout(res, 100, 'two');
+// });
 
-Promise.race([firstPromise, secondPromise]).then(res => console.log(res));
+// Promise.race([firstPromise, secondPromise]).then(res => console.log(res));
+
+//------------------------------------------------------------------------------------//
+
+// closures example :::
+
+// var num = 10;
+// function a() {
+//   console.log("inside a ::: " , num);   //10
+// }
+
+// function fn() {
+//   let num = 20;
+//   a();
+//   console.log("inside fn ::: " , num);   //20
+// }
+
+// fn();
+
+//------------------------------------------------------------------------------------//
+
+// Hoisting :::
+
+// console.log(a);
+// var a=10; //-> default initialized by value "undefined"
+
+// // console.log(b);    // output: cannot be accessed before initialization
+// let b;
+// console.log(b);   // output: undefined 
+// b=100;
+// console.log(b);   // output: 100
+
+// //let b=100; // -> initialized with 100 , if it not initialized with a value , 
+//              //it remains in TQZ (temporal dead zone). We cannot access this variable. 
+
+// // console.log(c);
+// // const c=1000;
+
+//------------------------------------------------------------------------------------//
+
+// Hoisting inside a function :::
+
+// hello();
+// function hello(){
+//   console.log("hello");
+// }
+
+
+// const hello=function(){
+//   console.log("hello");
+// }
+// console.log(hello);
+//hello();
+
+var hello=()=>{
+  console.log("hello");
+}
+console.log(hello);
+hello();
