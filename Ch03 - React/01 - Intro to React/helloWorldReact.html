@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HelloWorld - React</title>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+</head>
+<body>
+    <div id="root"></div>
+</body>
+
+    <script>
+        
+        const rootElement = document.getElementById("root")
+
+        //create an element using React.createElement
+        // 1. tag name of html 
+        // 2. the properties of the element (attributes,props)
+        // 3. the children of this element  
+        // const headingElement =  React.createElement("h1",null, "Hello from React");
+        // const headingElement =  React.createElement("h1",{style:{color:"blue"}}, "Hello from React");
+
+        const headingElement = React.createElement("div" , {style: {color:"blue"}} , React.createElement("p" , null , "myFirstReactCode"));
+
+        //render the element to the DOM using ReactDOM 
+        // ReactDOM.render take 2 args
+        // 1. the react element to render 
+        // 2. the dom element where the react element should be mounted
+
+        ReactDOM.render(headingElement , rootElement);
+
+    </script>
+
+</html>
