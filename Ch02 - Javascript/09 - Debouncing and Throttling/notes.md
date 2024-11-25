@@ -1,5 +1,6 @@
+# Debouncing and Throttling
 
-# SetTimeout Method
+## SetTimeout Method
 
 `SetTimeout` is a method that allows you to execute a specific function after a certain delay.
 
