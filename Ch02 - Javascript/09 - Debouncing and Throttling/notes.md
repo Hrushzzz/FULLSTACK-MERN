@@ -1,10 +1,10 @@
 
-
-## SetTimeout Method
+# SetTimeout Method
 
 `SetTimeout` is a method that allows you to execute a specific function after a certain delay.
 
 **Syntax:**
+
 ```javascript
 SetTimeoutfn(function, delay);
 ```
@@ -24,7 +24,6 @@ SetTimeoutfn(startAnimation, 1000); // 1000 milliseconds (1 second)
 SetTimeoutfn(startAnimation, 2000); // 2000 milliseconds (2 seconds)
 SetTimeoutfn(startAnimation, 3000); // 3000 milliseconds (3 seconds)
 ```
-
 
 ```javascript
 // Declare a variable to hold the timeout ID
@@ -56,6 +55,7 @@ In this example, we've introduced a variable `animationTimeout` to store the ID 
 Remember that using the `clearTimeout` function only has an effect if the specified timeout has not yet occurred. If the timeout has already triggered and the animation has started, clearing the timeout won't have any impact on the ongoing animation.
 
 ## Debouncing
+
 **Debouncing** is a technique used in web development to control the rate at which a function is executed, particularly in response to frequent events like scrolling, resizing, or typing. It ensures that a function is only executed after a certain period of inactivity, effectively reducing the number of times the function is called and improving performance.
 
 The basic idea behind debouncing is to postpone the execution of a function until a certain amount of time has passed since the last event. This is particularly useful when you want to avoid triggering a function multiple times rapidly, which can lead to unnecessary computations or actions.
@@ -147,9 +147,7 @@ debouncedSendNetworkRequest(); // id=4, 3000ms
 
 As the code simulates user typing events and the associated debounced function calls, you'll notice that the actual network request is only sent when the user stops typing or pauses for at least 3000ms (the highest delay among the simulated events). This demonstrates how debouncing effectively postpones the execution of the function until the user's input has settled.
 
-
-
-## Throttling 
+## Throttling
 
 Throttling is another technique used in web development to control the rate at which a function is executed, particularly in response to frequent events. Unlike debouncing, where the function is delayed until a certain period of inactivity occurs, throttling ensures that the function is executed at a steady rate, but not more frequently than a defined interval.
 
