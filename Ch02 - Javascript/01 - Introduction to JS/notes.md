@@ -39,7 +39,7 @@ console.log("Hello");
 To define a variable in JavaScript `var` keyword is used.
 
 ```javascript!
-var a = "Scaler";
+var a = "Hrishi";
 console.log(a);
 ```
 
@@ -308,7 +308,7 @@ The array is a data structure to store multiple values of multiple data types. T
 Any array element can be accessed by an index. If we want to access the fifth element of an array named `arr`, then we have to simply write `arr[4]`, as the array works on 0-indexing.
 
 ```javascript=
-let arr = [1, 'Scaler', true, undefined, null, [1, 2, 3] ,function(){}]
+let arr = [1, 'Hrishi', true, undefined, null, [1, 2, 3] ,function(){}]
 console.log(arr)
 // access an element with index from an array
 console.log(arr[4]) // print null
@@ -323,12 +323,12 @@ console.log(d[0]) // print 1
 We can change the value of any element by its index, if we want to change the value of the fourth element of an array named `arr`, then we need to simply write `arr[3]='new value'`
 
 ```javascript=
-let arr = [1, 'Scaler', true, undefined, null, [1, 2, 3]]
-console.log(arr) // print [1, 'Scaler', true, undefined, null, [1, 2, 3]]
+let arr = [1, 'Hrishi', true, undefined, null, [1, 2, 3]]
+console.log(arr) // print [1, 'Hrishi', true, undefined, null, [1, 2, 3]]
 // change an array element to a different value
-arr[3] = 'Mrinal'
+arr[3] = 'Hrishi'
 arr[4] = 700
-console.log(arr) //print [1, 'Scaler', true, 'Mrinal', 700, [1, 2, 3]]
+console.log(arr) //print [1, 'Hrishi', true, 'Hrishi', 700, [1, 2, 3]]
 
 ```
 
@@ -336,7 +336,7 @@ console.log(arr) //print [1, 'Scaler', true, 'Mrinal', 700, [1, 2, 3]]
 Gives the length of the array, length means the total number of elements in an array.
 
 ```javascript=
-let arr = [1, 'Scaler', true, undefined, null, [1, 2, 3]]
+let arr = [1, 'Hrishi', true, undefined, null, [1, 2, 3]]
 console.log(arr.length) // print 6 as there are a total of 6 elements in an array.
 
 ```
@@ -419,7 +419,7 @@ You Can directly create objects by specifying properties as shown below
 ## Example
 ```javascript=
 let person ={
-    name: 'Mrinal',
+    name: 'Hrishi',
     age: 24,
     phone: 1234567
 }
@@ -454,7 +454,6 @@ let captainAmerica ={
             pincode : 12345
         }
     }
-
 
     // Boolean
     isAvenger : true
