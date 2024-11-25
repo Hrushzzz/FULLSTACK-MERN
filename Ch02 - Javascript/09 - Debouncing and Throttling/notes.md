@@ -6,7 +6,7 @@
 
 **Syntax:**
 ```javascript
-SetTimeoutCfn(function, delay);
+SetTimeoutfn(function, delay);
 ```
 
 - `function`: The function you want to execute after the delay.
