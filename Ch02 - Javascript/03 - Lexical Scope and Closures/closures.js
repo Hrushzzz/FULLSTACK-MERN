@@ -1,3 +1,9 @@
+// Every function maintains a link to its parent, and that particular chain is known as "Scope Chaining".
+
+// Closures: Functions along with its lexical scope are called as "Closures".
+
+//------------------------------------------------------------------------------------//
+
 // function parent() {
 
 //   function child1() {
@@ -37,4 +43,4 @@ var add1 = add();
 var add2 = add1();
 var add3 = add2();
 add3();
-  
+
