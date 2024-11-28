@@ -1,8 +1,19 @@
 import React from 'react'
 
-function MyComponent() {
+function MyComponent({count, msg1, msg2}) {
   return (
-    <div>Hello, I am a sample component created by Hrishi</div>    
+
+    // receiving the data from parent - {props.count}
+    <>
+      <div>Hello, I am sample component {count} </div>
+      <p>{msg1}</p>
+      <p>{msg2}</p>
+    </>
+
+    //At a time we can return only a single HTML tag,
+    //so, we have to wrap them inside <>...</>
+    //<>...</> --> this is known as "Fragment".
+    
   )
 }
 
