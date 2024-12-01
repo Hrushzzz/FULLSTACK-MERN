@@ -7,6 +7,8 @@ import MyComponent from './components/myComponent'
 import DisplayData from './components/DisplayData'
 import ConditionalRendering from './components/ConditionalRendering'
 import EventHandling from './components/EventHandling'
+import Counter from './components/Counter'
+import { SimpleForm } from "./components/SimpleForm";
 
 function App() {
   const [count, setCount] = useState(0)
@@ -39,17 +41,13 @@ function App() {
       {/* <DisplayData shoppingList = {fruits} user = {person}></DisplayData> */}
       
       {/* After passing the Props from App.jsx, we have to destructure them in the Child component */}
-      <ConditionalRendering isUserLoggedIn = {isUserLoggedIn} username = {username}></ConditionalRendering>
-      <EventHandling></EventHandling>
+      {/* <ConditionalRendering isUserLoggedIn = {isUserLoggedIn} username = {username}></ConditionalRendering> */}
+      {/* <EventHandling></EventHandling> */}
 
+      {/* <Counter></Counter> */}
+
+      <SimpleForm></SimpleForm>
     </>
-
-    // Benefits of Props :::
-    // 1. Customization
-    // 2. Reusability of components
-    // 3. Seperation of concerns
-    // 4. Efficient
-    // 5. Not repeating the same code multiple times
   )
 }
 
