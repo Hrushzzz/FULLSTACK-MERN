@@ -8,7 +8,7 @@ import DisplayData from './components/DisplayData'
 import ConditionalRendering from './components/ConditionalRendering'
 import EventHandling from './components/EventHandling'
 import Counter from './components/Counter'
-import { SimpleForm } from "./components/SimpleForm";
+import SimpleForm from "./components/SimpleForm";
 
 function App() {
   const [count, setCount] = useState(0)
