@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import Counter2 from './Counter2';
+import Counter2 from './06 - Counter2';
 
 function Counter() {
 

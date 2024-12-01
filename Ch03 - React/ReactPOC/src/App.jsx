@@ -5,10 +5,10 @@ import './App.css'
 //We have to import Child components in order to use them
 import MyComponent from './components/myComponent'
 import DisplayData from './components/DisplayData'
-import ConditionalRendering from './components/ConditionalRendering'
-import EventHandling from './components/EventHandling'
-import Counter from './components/Counter'
-import SimpleForm from "./components/SimpleForm";
+import ConditionalRendering from './components/03 - ConditionalRendering'
+import EventHandling from './components/04 - EventHandling'
+import Counter from './components/05 - Counter'
+import SimpleForm from "./components/09 - SimpleForm";
 
 function App() {
   const [count, setCount] = useState(0)

@@ -4,6 +4,7 @@ function SimpleForm() {
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
 
+    
     const handleName = (value) => {
         setName(value);
     }
