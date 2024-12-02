@@ -9,6 +9,8 @@ import ConditionalRendering from './components/03 - ConditionalRendering'
 import EventHandling from './components/04 - EventHandling'
 import Counter from './components/05 - Counter'
 import SimpleForm from "./components/09 - SimpleForm";
+import AdvancedForm01 from "./components/11 - AdvancedForm01";
+import AdvancedForm02 from './components/12 - AdvancedForm02'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -46,7 +48,11 @@ function App() {
 
       {/* <Counter></Counter> */}
 
-      <SimpleForm></SimpleForm>
+      {/* <SimpleForm></SimpleForm> */}
+
+      {/* <AdvancedForm01></AdvancedForm01> */}
+
+      <AdvancedForm02></AdvancedForm02>
     </>
   )
 }
