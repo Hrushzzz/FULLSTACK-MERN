@@ -33,6 +33,8 @@ function App() {
   let username = "Hrushikesh";
 
   const [temperature, setTemperature] = useState(0);
+  //We should not give main function access to other component, so we are wrapping inside a function.
+  // and give this function as a reference (pass it as a prop). 
   const updateTemperature = (value) => {
     console.log("temperature state is changed in App");
     setTemperature(value);
