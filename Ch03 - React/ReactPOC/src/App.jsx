@@ -13,6 +13,7 @@ import AdvancedForm01 from "./components/11 - AdvancedForm01";
 import AdvancedForm02 from './components/12 - AdvancedForm02'
 import TemperatureInput from './components/13 - TemperatureInput'
 import TemperatureDisplay from './components/14 - TemperatureDisplay'
+import UseEffectHook from './components/17 - UseEffectHook'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -62,8 +63,10 @@ function App() {
 
       {/* <AdvancedForm02></AdvancedForm02> */}
 
-      <TemperatureInput temperature={temperature} updateTemperature = {updateTemperature}></TemperatureInput>
-      <TemperatureDisplay temperature={temperature}></TemperatureDisplay>
+      {/* <TemperatureInput temperature={temperature} updateTemperature = {updateTemperature}></TemperatureInput>
+      <TemperatureDisplay temperature={temperature}></TemperatureDisplay> */}
+
+      <UseEffectHook></UseEffectHook>
     </>
   )
 }
