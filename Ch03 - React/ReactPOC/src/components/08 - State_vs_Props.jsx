@@ -9,6 +9,12 @@
 // This encapsulation of State helps to keep the logic of the application 
 // organized and maintainable.
 
+// ***NOTE*** ::: A state can be changed within that component only.
+//i.e in which that state is created.
+
+//When a state is changed in Parent, whatever children components that are consuming 
+//that state as a Prop are also re-rendered.
+
 
 
 // PROPS :::
@@ -25,6 +31,7 @@
 
 
 // "Props" cannot be used to manage the "state" because of its nature:
+
 // 1. Props are IMMUTABLE : props cannot be changed within the component that receives them.
        // Props are only passed down to display a particular information and keep those things in sync.
        // We cannot update a Prop.

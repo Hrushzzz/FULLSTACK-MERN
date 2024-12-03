@@ -11,6 +11,8 @@ import Counter from './components/05 - Counter'
 import SimpleForm from "./components/09 - SimpleForm";
 import AdvancedForm01 from "./components/11 - AdvancedForm01";
 import AdvancedForm02 from './components/12 - AdvancedForm02'
+import TemperatureInput from './components/13 - TemperatureInput'
+import TemperatureDisplay from './components/14 - TemperatureDisplay'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -27,7 +29,13 @@ function App() {
   }
 
   let isUserLoggedIn = true;
-  let username = "Hrushikesh"
+  let username = "Hrushikesh";
+
+  const [temperature, setTemperature] = useState(0);
+  const updateTemperature = (value) => {
+    console.log("temperature state is changed in App");
+    setTemperature(value);
+  }
 
   return (
     <>
@@ -52,7 +60,10 @@ function App() {
 
       {/* <AdvancedForm01></AdvancedForm01> */}
 
-      <AdvancedForm02></AdvancedForm02>
+      {/* <AdvancedForm02></AdvancedForm02> */}
+
+      <TemperatureInput temperature={temperature} updateTemperature = {updateTemperature}></TemperatureInput>
+      <TemperatureDisplay temperature={temperature}></TemperatureDisplay>
     </>
   )
 }
