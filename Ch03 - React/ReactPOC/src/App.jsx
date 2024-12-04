@@ -14,6 +14,7 @@ import AdvancedForm02 from './components/12 - AdvancedForm02'
 import TemperatureInput from './components/13 - TemperatureInput'
 import TemperatureDisplay from './components/14 - TemperatureDisplay'
 import UseEffectHook from './components/17 - UseEffectHook'
+import ReactRouterDOM from './components/19 - ReactRouterDOM'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -68,7 +69,9 @@ function App() {
       {/* <TemperatureInput temperature={temperature} updateTemperature = {updateTemperature}></TemperatureInput>
       <TemperatureDisplay temperature={temperature}></TemperatureDisplay> */}
 
-      <UseEffectHook></UseEffectHook>
+      {/* <UseEffectHook></UseEffectHook> */}
+
+      <ReactRouterDOM></ReactRouterDOM>
     </>
   )
 }
