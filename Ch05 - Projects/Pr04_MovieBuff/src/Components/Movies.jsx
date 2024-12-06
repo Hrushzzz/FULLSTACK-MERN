@@ -24,7 +24,21 @@ function Movies() {
             title: "Movie 5",
           },
     ]);
+
+    const [pageNo, setPageNo] = useState(1);
+
+    const handlePrev = () => {
+      if (pageNo == 1) {
+         return; 
+      }
+      setPageNo(pageNo - 1);
+    }
+
+    const handleNext = () => {
+      setPageNo(pageNo + 1);
+    }
   return (
+    <>
     <div>
         <div><h1 className="text-center text-2xl font-bold">Trending Movies</h1></div>
         <div className="flex justify-evenly flex-wrap gap-8">
@@ -38,6 +52,13 @@ function Movies() {
             }
         </div>
     </div>
+
+    <div className='bg-gray-400 h-[50px] w-full mt-6 p-4 flex justify-center gap-2 text-2xl'>
+      <div className='px-8' onClick={handlePrev}><i class="fa-solid fa-caret-left"></i></div>
+      <div>{pageNo}</div>
+      <div className='px-8' onClick={handleNext}><i class="fa-solid fa-caret-right"></i></div>
+    </div>
+    </>
   );
 }
 
