@@ -1,8 +1,14 @@
 import React from 'react'
+import Banner from './Banner'
+import Movies from './Movies'
 
 function Home() {
   return (
-    <div>Home</div>
+    <>
+        <Banner></Banner>
+        <Movies></Movies>
+    </>
+    
   )
 }
 
