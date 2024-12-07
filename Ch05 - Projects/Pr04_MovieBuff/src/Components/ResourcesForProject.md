@@ -21,4 +21,6 @@
 
 ==> Movie API -> TMDB -> https://www.themoviedb.org/settings/api
 
+==> Installing Axios :::   npm install axios --save
+
  -->
