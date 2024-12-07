@@ -17,7 +17,7 @@
 ==> Website for Flexbox practice :::    flexbox froggy
 
 ==> Fontawesome icons
-==> Importing fontawesome library :::   https://cdnjs.com/libraries/font-awesome
+==> Importing fontawesome library into index.html :::   https://cdnjs.com/libraries/font-awesome
 
 ==> Movie API -> TMDB -> https://www.themoviedb.org/settings/api
 
