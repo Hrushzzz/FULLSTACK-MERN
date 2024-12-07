@@ -1,7 +1,7 @@
 //Example - 1 :
 
-var a = 2
-var b = 3
+var a = 2;
+var b = 3;
 
 function addition(num1 , num2){
     var sum = num1+num2
