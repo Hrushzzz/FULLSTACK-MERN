@@ -3,13 +3,13 @@ import React, { useEffect, useState } from "react";
 function Banner() {
   const [title, setTitle] = useState("");
   const [bannerImage, setBannerImage] = useState(
-    "https://images.hdqwalls.com/wallpapers/bthumb/spiderman-the-ultimate-nu.jpg"
+    "https://fastly.picsum.photos/id/10/2500/1667.jpg?hmac=J04WWC_ebchx3WwzbM-Z4_KC_LeLBWr5LZMaAkWkF68"
   );
 
   useEffect(() => {
     const getMovies = async function () {
       const resp = await fetch(
-        `https://api.themoviedb.org/3/movie/now_playing?api_key=1525ec660ef3d9896ec2805cb1a55508&language=en-US&page=1`
+        `https://api.themoviedb.org/3/trending/movie/day?api_key=3aec63790d50f3b9fc2efb4c15a8cf99&language=en-US&page=1`
       );
       const { results } = await resp.json();
       console.log(results);
