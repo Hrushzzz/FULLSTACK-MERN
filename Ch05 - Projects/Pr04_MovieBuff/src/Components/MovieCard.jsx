@@ -11,6 +11,7 @@ function MovieCard({movieObj, watchList, addToWatchList, removeFromWatchList}) {
             return false;
         }
     }
+    
   return (
     <div
       className="h-[40vh] w-[200px] bg-center bg-cover rounded-xl hover:scale-110 duration-300 hover:cursor-pointer flex flex-col items-end justify-between"

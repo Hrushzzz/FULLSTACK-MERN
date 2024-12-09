@@ -12,22 +12,24 @@ function Movies() {
          return; 
       }
       setPageNo(pageNo - 1);
-    }
+    };
 
     const handleNext = () => {
       setPageNo(pageNo + 1);
-    }
+    };
 
     const addToWatchList = (movieObj) => {
-      setWatchList([...watchList, movieObj]);
       // spreading the previous watchlist and adding them into a new Array and 
       // adding the new movieObj into the newly created watchlist Array.
-    }
+      let updatedWatchlist = [...watchList, movieObj];
+      setWatchList(updatedWatchlist);
+      localStorage.setItem("watchlist", JSON.stringify(updatedWatchlist));
+    };
 
     const removeFromWatchList = (movieObj) => {
       const updatedWatchList = watchList.filter((movie) => movie.id != movieObj.id);
       setWatchList([...updatedWatchList]);
-      console.log(watchList);
+      localStorage.setItem("watchlist", JSON.stringify(updatedWatchList));
     }
 
 
@@ -58,14 +60,21 @@ function Movies() {
           }
         };
         const response = await axios.request(options);
-        // console.log(response);
         const movieData = response.data?.results;
         // console.log(movieData);
         setMovies(movieData);
       };
       getMovies();
-    }, [pageNo])    // second variation of useEffect()
+    }, [pageNo]);    // second variation of useEffect()
     
+    // getting the selected watchlist movies from local storage
+    useEffect(() => {
+      if (localStorage.getItem("watchlist")) {
+        let watchlistFromLS = JSON.parse(localStorage.getItem("watchlist"));
+        setWatchList(watchlistFromLS);
+      }
+    }, []);
+      
   return (
     <>
       {movies == null ? (
