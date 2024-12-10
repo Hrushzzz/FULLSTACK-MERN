@@ -15,6 +15,8 @@ import TemperatureInput from './components/13 - TemperatureInput'
 import TemperatureDisplay from './components/14 - TemperatureDisplay'
 import UseEffectHook from './components/17 - UseEffectHook'
 import ReactRouterDOM from './components/19 - ReactRouterDOM'
+import PropDrilling from './components/20 - PropDrilling'
+import ContextAPI from './components/21 - ContextAPI'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -71,7 +73,11 @@ function App() {
 
       {/* <UseEffectHook></UseEffectHook> */}
 
-      <ReactRouterDOM></ReactRouterDOM>
+      {/* <ReactRouterDOM></ReactRouterDOM> */}
+
+      <PropDrilling></PropDrilling>
+
+      {/* <ContextAPI></ContextAPI> */}
     </>
   )
 }
