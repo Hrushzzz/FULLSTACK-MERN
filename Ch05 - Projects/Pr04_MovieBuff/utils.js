@@ -1,4 +1,4 @@
-const genreids = {
+const genreidName = {
   28: "Action",
   12: "Adventure",
   16: "Animation",
@@ -19,4 +19,4 @@ const genreids = {
   10752: "War",
   37: "Western",
 };
-export default genreids;
+export default genreidName;
