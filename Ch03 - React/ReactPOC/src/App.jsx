@@ -75,9 +75,9 @@ function App() {
 
       {/* <ReactRouterDOM></ReactRouterDOM> */}
 
-      <PropDrilling></PropDrilling>
+      {/* <PropDrilling></PropDrilling> */}
 
-      {/* <ContextAPI></ContextAPI> */}
+      <ContextAPI></ContextAPI>
     </>
   )
 }

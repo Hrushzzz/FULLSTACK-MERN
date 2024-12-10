@@ -12,6 +12,22 @@ Prop drilling can make our code:
 --> Hard to refactor: Changes in props require updates across multiple components.
 --> Error-prone: Passing props through multiple layers can lead to mistakes or missed updates.
 
+
+Solutions to Avoid Prop Drilling ::
+
+--> Context API: 
+Provides a way to share values between components without explicitly passing props.
+
+--> State Management Libraries:
+Tools like Redux, MobX, or Zustand provide centralized state management, reducing the need for prop drilling.
+
+--> Custom Hooks:
+Abstract logic into reusable hooks that can be accessed where needed, avoiding redundant prop-passing.
+
+--> Component Composition:
+Use higher-order components (HOCs) or render props patterns to pass necessary data directly to the child component.
+These methods help make your React applications more scalable and easier to maintain.
+
 */
 
 
