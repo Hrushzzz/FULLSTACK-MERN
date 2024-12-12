@@ -17,12 +17,12 @@ function Counter() {
 
   return (
 
-    // 3. UI : it is thr html that will render UI 
+    // 3. UI : It is the html that will render UI 
     <div>
         <h1>Counter</h1>
-        <button onClick={handleIncrement}>+</button>
+        <button onClick={handleIncrement}>-</button>
         <p>{count}</p>
-        <button onClick={handleDecrement}>-</button>
+        <button onClick={handleDecrement}>+</button>
     </div>
 
   )
