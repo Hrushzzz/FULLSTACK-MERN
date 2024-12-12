@@ -1,35 +1,38 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import genreidName from "../../utils";
+import { MovieContext } from "../MovieContext";
 
 function Watchlist() {
-  const [watchlist, setWatchlist] = useState([]);
+  // const [watchlist, setWatchlist] = useState([]);
   const [search, setSearch] = useState("");
   const [genre, setGenre] = useState(["All Genres"]);
   const [currGenre, setCurrGenre] = useState("");
 
-  useEffect(() => {
-    if (localStorage.getItem("watchlist")) {
-      let updatedWatchList = JSON.parse(localStorage.getItem("watchlist"));
-      console.log(updatedWatchList);
-      setWatchlist(updatedWatchList);
-    }
-  }, []);
+  const { watchList, setWatchList,  removeFromWatchList } = useContext(MovieContext);
+
+  // useEffect(() => {
+  //   if (localStorage.getItem("watchlist")) {
+  //     let updatedWatchList = JSON.parse(localStorage.getItem("watchlist"));
+  //     console.log(updatedWatchList);
+  //     setWatchlist(updatedWatchList);
+  //   }
+  // }, []);
 
   const handleIncreasingSorting = () => {
     console.log("sort increasing on basis of rating");
-    let sortedArr = watchlist.sort(
+    let sortedArr = watchList.sort(
       (m1, m2) => m1.vote_average - m2.vote_average
     );
     console.log(sortedArr);
-    setWatchlist([...sortedArr]);
+    setWatchList([...sortedArr]);
   };
 
   const handleDecreasingSorting = () => {
     console.log("sort decreasing on basis of rating");
-    let sortedArr = watchlist.sort(
+    let sortedArr = watchList.sort(
       (m1, m2) => m2.vote_average - m1.vote_average
     );
-    setWatchlist([...sortedArr]);
+    setWatchList([...sortedArr]);
   };
 
   const handleSearch = (e) => {
@@ -37,29 +40,29 @@ function Watchlist() {
   };
 
   useEffect(() => {
-    let allGenres = watchlist.map(
+    let allGenres = watchList.map(
       (movieObj) => genreidName[movieObj.genre_ids[0]]
     );
     console.log(allGenres);
     let uniqueGenres = new Set(allGenres);
     console.log(uniqueGenres);
     setGenre(["All Genres", ...uniqueGenres]);
-  }, [watchlist]);
+  }, [watchList]);
 
   const handleGenre = (genreName) => {
     setCurrGenre(genreName);
   };
 
-  const handleDelete = (movieToBeDeleted) => {
-    //delete a movie from watchlist
-    // 1. filter that movie from watchlist , it would not be visible on UI
-    let updatedWatchlist = watchlist.filter(
-      (movie) => movie.id != movieToBeDeleted.id
-    );
-    setWatchlist(updatedWatchlist);
-    // 2. delete it from LS , so that when page is reloaded that movie does not come up
-    localStorage.setItem("watchlist", JSON.stringify(updatedWatchlist));
-  };
+  // const handleDelete = (movieToBeDeleted) => {
+  //   //delete a movie from watchlist
+  //   // 1. filter that movie from watchlist , it would not be visible on UI
+  //   let updatedWatchlist = watchList.filter(
+  //     (movie) => movie.id != movieToBeDeleted.id
+  //   );
+  //   setWatchList(updatedWatchlist);
+  //   // 2. delete it from LS , so that when page is reloaded that movie does not come up
+  //   localStorage.setItem("watchlist", JSON.stringify(updatedWatchlist));
+  // };
 
   return (
     <>
@@ -117,7 +120,7 @@ function Watchlist() {
             </tr>
           </thead>
           <tbody className="divide-y divide gray-100 border-t border-gray-100">
-            {watchlist
+            {watchList
               .filter((movieObj) => {
                 //return if movieObj's genre is equl to currGenre
                 if (currGenre && currGenre != "All Genres")
@@ -152,7 +155,7 @@ function Watchlist() {
                   </td>
                   <td
                     className="pl-6 py-4 text-red-600"
-                    onClick={() => handleDelete(movieObj)}
+                    onClick={() => removeFromWatchList(movieObj)}
                   >
                     <i class="fa-solid fa-trash"></i>
                   </td>

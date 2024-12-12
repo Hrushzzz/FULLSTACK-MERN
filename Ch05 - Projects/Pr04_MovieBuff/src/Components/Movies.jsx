@@ -1,11 +1,15 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import axios from 'axios'
 import MovieCard from "./MovieCard";
+import { MovieContext } from "../MovieContext";
 
 function Movies() {
   const [movies, setMovies] = useState(null);
   const [pageNo, setPageNo] = useState(1);
-  const [watchList, setWatchList] = useState([]);
+  // const [watchList, setWatchList] = useState([]);
+
+  const { watchList, setWatchList, addtoWatchList, removeFromWatchList } = useContext(MovieContext);
+  // Instead of useContext(MovieContext), we can also use MovieContextWrapper.Consumer
 
   const handlePrev = () => {
     if (pageNo == 1) {
@@ -18,19 +22,19 @@ function Movies() {
     setPageNo(pageNo + 1);
   };
 
-  const addtoWatchList = (movieObj) => {
-    // spreading the previous watchlist and adding them into a new Array and 
-    // adding the new movieObj into the newly created watchlist Array.
-    let updatedWatchlist=[...watchList, movieObj];
-    setWatchList(updatedWatchlist);
-    localStorage.setItem("watchlist", JSON.stringify(updatedWatchlist));
-  }
+  // const addtoWatchList = (movieObj) => {
+  //   // spreading the previous watchlist and adding them into a new Array and 
+  //   // adding the new movieObj into the newly created watchlist Array.
+  //   let updatedWatchlist=[...watchList, movieObj];
+  //   setWatchList(updatedWatchlist);
+  //   localStorage.setItem("watchlist", JSON.stringify(updatedWatchlist));
+  // }
 
-  const removeFromWatchList = (movieObj) => {
-    const updatedWatchList = watchList.filter((movie) => movie.id != movieObj.id);
-    setWatchList([...updatedWatchList]);
-    localStorage.setItem("watchlist", JSON.stringify(updatedWatchList));
-  }
+  // const removeFromWatchList = (movieObj) => {
+  //   const updatedWatchList = watchList.filter((movie) => movie.id != movieObj.id);
+  //   setWatchList([...updatedWatchList]);
+  //   localStorage.setItem("watchlist", JSON.stringify(updatedWatchList));
+  // }
 
   useEffect(() => {
     const getMovies = async function () {
@@ -66,13 +70,14 @@ function Movies() {
     getMovies();
   }, [pageNo]);   // second variation of useEffect()
 
-  // getting the selected watchlist movies from local storage
-  useEffect(() => {
-    if(localStorage.getItem("watchlist")){
-      let watchlistFromLS = JSON.parse(localStorage.getItem("watchlist"));
-      setWatchList(watchlistFromLS);
-    }
-  },[])
+
+  // // getting the selected watchlist movies from local storage
+  // useEffect(() => {
+  //   if(localStorage.getItem("watchlist")){
+  //     let watchlistFromLS = JSON.parse(localStorage.getItem("watchlist"));
+  //     setWatchList(watchlistFromLS);
+  //   }
+  // },[])
 
   return (
     <>

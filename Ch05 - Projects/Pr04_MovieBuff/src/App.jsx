@@ -7,12 +7,13 @@ import Navbar from './Components/Navbar'
 import Home from './Components/Home'
 import Watchlist from './Components/Watchlist'
 import { Routes, Route } from 'react-router-dom'
+import MovieContextWrapper from './MovieContext'
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
-    <>
+
+    <MovieContextWrapper>
 
       <Navbar></Navbar>
       <Routes>
@@ -20,7 +21,8 @@ function App() {
         <Route path='/watchlist' element = {<Watchlist></Watchlist>}></Route>
       </Routes>
 
-    </>
+    </MovieContextWrapper>
+
   )
 }
 
