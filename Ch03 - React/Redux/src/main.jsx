@@ -15,6 +15,5 @@ createRoot(document.getElementById('root')).render(
     
 )
 
-
 // Provider store={store} --> store is a default method created by Redux(syntax) ,
 // and there we are passing the store we created as a Prop.  -->  imported at line 5.
