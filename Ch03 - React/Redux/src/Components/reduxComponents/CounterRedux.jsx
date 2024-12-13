@@ -4,11 +4,14 @@ import counterSlice from '../../redux/counterSlice';
 console.log(counterSlice);
 
 const actions = counterSlice.actions;
+
 function CounterRedux() {
 
+  // useSelector() hook --> it is used to access the store.
     const {count , name , age} = useSelector((store) => {return store.counterState });
-    // console.log(counterSliceInitialStateObj);
+    // Here, we get access to our initial state in our stateObject.
     
+  // useDispatch() hook --> it is used to update the state
     const dispatch = useDispatch();
 
     const handleIncrement = () => {
