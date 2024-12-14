@@ -11,10 +11,15 @@ const TodoSlice = createSlice({
     // updating the state
     reducers: {
         setValue: (state, descObj) => {
-
+            console.log("I am a setValue function", descObj);
+            state.value = descObj.payload;
+            
         },
         addTodo: (state, descObj) => {
-
+            const newTask = descObj.payload;
+            const updatedTodo = [...state.todoList , newTask];
+            state.todoList = updatedTodo;
+            state.value = "";
         }
     }
 });

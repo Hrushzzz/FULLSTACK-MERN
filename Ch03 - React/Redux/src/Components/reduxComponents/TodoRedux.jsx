@@ -12,6 +12,15 @@ function TodoRedux() {
 
     const dispatch = useDispatch();
 
+    const handleChange = (e) => {
+        const updatedValue = e.target.value;
+        dispatch(actions.setValue(updatedValue));
+    }
+
+    const handleSubmit = () => {
+        dispatch(actions.addTodo(value));
+    }
+
 
   return (
 
@@ -19,13 +28,13 @@ function TodoRedux() {
         <h2>Todo</h2>
         <div>
             <div className="inputBox">
-                <input type='text' name='' id=''/>
-                <button></button>
+                <input type='text' value={value} onChange={handleChange}/>
+                <button onClick={handleSubmit}>Add</button>
             </div>
             <div className="list">
                 <ul>
                     {
-                        list.map((task, idx) => {
+                        todoList.map((task, idx) => {
                             return <li key={idx}> {task} </li>
                         })
                     }
