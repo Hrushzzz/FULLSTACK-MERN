@@ -7,3 +7,5 @@
 // ==> useSelector() to access the state
 // ==> useDispatch() to update the state
 // ==> Reducers help us to write the updation logic
+
+// ==> For installing middleware :::   npm install i redux-thunk
