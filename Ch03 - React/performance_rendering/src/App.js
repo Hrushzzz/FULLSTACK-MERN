@@ -5,6 +5,8 @@ import {BrowserRouter, Routes, Route, Link} from "react-router-dom";
 // import AboutPage from "./Components/AboutPage";
 // import Navbar from "./Components/Navbar";
 import { Suspense, lazy } from 'react';
+import UseMemo from './Components/UseMemo';
+import UseCallback from './Components/UseCallback';
 // import { useState, useEffect } from 'react';
  
 // Instead of using useState, we can use lazy loading of components ::
@@ -88,6 +90,9 @@ function App() {
       </Suspense>
       </div>
     </BrowserRouter>
+
+    <UseMemo></UseMemo>
+    <UseCallback></UseCallback>
     </>
     
   );
