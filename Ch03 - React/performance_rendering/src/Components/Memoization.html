@@ -1,0 +1,86 @@
+<!--
+
+Memoization in React :::
+=> Memoization is an optimization technique used in React to prevent unnecessary computations or re-rendering of components. 
+=> It ensures that a value or a function result is only recalculated when its dependencies change, 
+improving performance in scenarios with heavy computations or large renders.
+
+
+Why Memoization is Important in React :::
+=> React re-renders a component and its child components whenever the parent state or props change.
+=> Memoization avoids re-rendering components or recomputing values when inputs (dependencies) haven't changed.
+=> It enhances performance, particularly in apps with complex UIs or large datasets.
+
+
+
+1. React.useMemo :::
+
+=> useMemo is a React Hook used for memoizing the result of a computation. 
+=> It caches the computed value and recalculates it only when one of its dependencies changes.
+
+Syntax :
+const memoizedValue = useMemo(() => computeValue(a, b), [a, b]);
+
+computeValue(a, b): Function whose return value needs to be memoized.
+Dependencies [a, b]: Memoized value is recomputed only when one of these dependencies changes.
+
+Use Case :
+=> When you have an expensive computation that shouldn't run on every render.
+
+
+
+2. React.useCallback :::
+
+=> useCallback is a React Hook used for memoizing a function. 
+=> It returns a memoized version of the callback function, which changes only when one of its dependencies changes.
+
+Syntax :
+const memoizedCallback = useCallback(() => doSomething(a, b), [a, b]);
+
+doSomething(a, b): Function to be memoized.
+Dependencies [a, b]: Memoized function is recreated only when these dependencies change.
+
+Use Case:
+=> When you pass a callback as a prop to a child component, 
+useCallback ensures the function reference doesn't change unnecessarily, preventing re-renders of the child component.
+
+
+
+When to Use Memoization :::
+=> Expensive Computations: Use useMemo to avoid recalculations.
+=> Prop-Drilling Functions: Use useCallback to prevent child component re-renders.
+=> Rendering Optimization: Use React.memo with functional components to prevent unnecessary re-renders.
+
+ 
+
+Difference Between useMemo and useCallback :::
+
+==>useMemo :: 
+=> Purpose : Memoizes the result of a computation
+=> Returns : A value
+=> Use Case : Expensive computations
+
+
+==> useCallback ::
+=> Purpose : Memoizes a function reference
+=> Returns : A function
+=> Use Case : Prevent child re-renders with callback props
+
+
+
+Caveats ::: 
+=> Premature Optimization: 
+Don't use memoization everywhere. It can add complexity without noticeable performance improvements.
+
+=> Dependencies Management: 
+Ensure you correctly manage dependencies in the dependency array to avoid stale values.
+
+=>Profiling: 
+Use React DevTools to identify performance bottlenecks before applying memoization.
+
+
+By combining useMemo, useCallback, and other tools like React.memo, 
+you can effectively manage performance in your React applications.
+
+	
+-->

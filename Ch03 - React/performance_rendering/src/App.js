@@ -4,8 +4,9 @@ import {BrowserRouter, Routes, Route, Link} from "react-router-dom";
 // import ContactPage from "./Components/ContactPage";
 // import AboutPage from "./Components/AboutPage";
 // import Navbar from "./Components/Navbar";
-import { useState, useEffect, Suspense, lazy } from 'react';
-
+import { Suspense, lazy } from 'react';
+// import { useState, useEffect } from 'react';
+ 
 // Instead of using useState, we can use lazy loading of components ::
 
 // HomePage = cb function --> import my component
