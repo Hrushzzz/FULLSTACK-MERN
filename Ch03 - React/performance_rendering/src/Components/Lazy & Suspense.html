@@ -1,0 +1,50 @@
+<!--
+
+==> React.lazy :::
+ React.lazy is a function that lets you load components dynamically, only when they are rendered. 
+ It helps reduce the initial bundle size by splitting the code and loading parts of it on demand.
+
+ Syntax :: 
+ const LazyComponent = React.lazy(() => import('./LazyComponent'));
+
+=> The argument to React.lazy must be a function that returns a dynamic import().
+=> It returns a React component that you can render like any other component.
+
+
+==> React.suspense :::
+React.Suspense is a component that provides a fallback UI while a lazy-loaded component is being loaded. 
+It acts as a wrapper for components that use React.lazy.
+
+Syntax :: 
+<Suspense fallback={<div>Loading...</div>}>
+  <LazyComponent />
+</Suspense>
+
+=> The fallback prop specifies the UI to render while waiting for the lazy-loaded component to load.
+=> You can use any valid React element as the fallback.
+
+
+==> How They Work Together :::
+=> When React encounters a lazy-loaded component wrapped in Suspense, it displays the fallback UI until the component is fully loaded.
+=> This improves the user experience by showing some feedback instead of a blank screen while the code is loading.
+
+
+==> Best Practices :::
+
+=> Lazy load only larger components: 
+Use React.lazy for routes or components that aren't immediately needed on app load.
+
+=> Place fallback UI strategically: 
+Ensure Suspense wraps only components that need lazy loading to avoid unnecessary loading indicators.
+
+=> Error boundaries: 
+Combine with error boundaries to handle errors during dynamic imports gracefully.
+
+
+==> When to Use :::
+
+=> Large Applications: Break down large bundles for better performance.
+=> Route-Based Splitting: Load routes only when accessed (common with react-router).
+=> On-Demand Loading: For rarely used components like modals, charts, or admin panels.
+
+-->
