@@ -42,3 +42,7 @@ const obj2 = {
 };
 
 obj2.fn1();
+
+
+// NOTE ::: Arrow functions will not have their own "this",
+//Arrow functions "this" will actually point to "this" keyword of their parent.
