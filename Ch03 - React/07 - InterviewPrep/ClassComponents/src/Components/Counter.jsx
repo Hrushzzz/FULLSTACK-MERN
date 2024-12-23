@@ -12,6 +12,8 @@ export default class Counter extends Component {
     };
   }
 
+  //In Class based components, functions should always have to be arrow functions
+  // or we can always use bind to point this
   handleIncrement = () => {
     console.log("hello", this);
     this.setState({ count: this.state.count + 1 });
