@@ -8,10 +8,10 @@ function App() {
 
   return (
     <>
-      <Counter></Counter>
+      {/* <Counter></Counter> */}
       {/* <CounterFn></CounterFn> */}
       {/* <TodoList></TodoList> */}
-      {/* <TodoListFn></TodoListFn> */}
+      <TodoListFn></TodoListFn>
     </>
   )
 }
