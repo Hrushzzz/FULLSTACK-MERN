@@ -3,6 +3,7 @@ import express from "express";     // Step 01 => we can use any of the two
 
 import UserRoutes from "./routes/user.route.js";   //importing user.route 
 import BlogRoutes from "./routes/blog.route.js";
+import connectToDB from "./database/mongoDb.js";   // importing our database
 
 const app = express();   // Step 02 => Creating an Instance
 
@@ -20,6 +21,7 @@ app.all("*", (req, res) => {
 
 app.listen(5002, () => {      
     console.log("Server started at http://localhost:5002");
+    connectToDB();   // connecting to our database as soon as our server is created
 });     // Step 03 => Creating a Server
 
 
