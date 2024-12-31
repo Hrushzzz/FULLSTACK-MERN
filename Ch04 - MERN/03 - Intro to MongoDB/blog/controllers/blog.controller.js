@@ -46,8 +46,8 @@ export const updateBlogById = async (req, res) => {
     try {
         const newBlogData = req.body;
         const blogId = req.params.blogId;
-        const data = await Blog.updateOne({ _id: blogId }, {$set: newBlogData});
-        //".updateOne" -> method in MongoDB
+        const data = await Blog.updateOne({ _id: blogId }, {$set: newBlogData});   //".updateOne" -> method in MongoDB
+        // { _id: blogId } -> getting blogId , {$set: newBlogData} -> upsert: new data.
         res.status(200).send(data);
     } catch(e) {
         res.status(500).send(e.message);

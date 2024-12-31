@@ -15,7 +15,7 @@ const blogSchema = new Schema(
         },
         content: String,
     },
-    {timestamps: true}
+    {timestamps: true}   // we passed this as a second parameter
 );
 
 
