@@ -8,7 +8,8 @@ import { renderBlogs, renderBlogById } from "./controllers/blog.controller.js";
 
 const app = express();
 
-app.set("view engine", "ejs");   // ejs --> Embedded JavaScript
+app.set("view engine", "ejs");   // => Configuring a "View Engine"
+// ejs --> Embedded JavaScript
 // This is used for View Layer of MVC architecture and "ejs" is our templating engine
 
 app.use(express.json());
@@ -18,6 +19,7 @@ app.use("/api/blog", BlogRoutes);
 
 app.get('/blog/list', renderBlogs);
 app.get('/blog/:blogId', renderBlogById);   // rendering EJS files => views
+// app.get('/blog/:blogId/:blogTitle', renderBlogById);
 
 
 app.all("*", (req, res) => {

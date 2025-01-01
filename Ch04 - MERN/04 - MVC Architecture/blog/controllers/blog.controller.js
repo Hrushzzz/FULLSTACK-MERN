@@ -61,6 +61,6 @@ export const renderBlogs = async (req, res) => {
 
 export const renderBlogById = async (req, res) => {
     const blogId = req.params.blogId;
-    const blogData = await Blog.findById(blogId);
-    res.render(blogData);
+    const blog = await Blog.findById(blogId);
+    res.render('blogDetail', { blog });
 }
