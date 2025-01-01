@@ -3,7 +3,7 @@ import Blog from "../model/blog.model.js";
 
 export const getAllBlog = async (req, res) => {
     try {
-        const allBlogsData = await Blog.find({});   // ".find" ->  method in MongoDB
+        const allBlogsData = await Blog.find({});
         res.status(200).send(allBlogsData);
     } catch(e) {
         res.status(500).send(e.message);
@@ -12,9 +12,8 @@ export const getAllBlog = async (req, res) => {
 
 export const getBlogById = async (req, res) => {
     try {
-        const blogId = req.params.blogId;   //blogId is a dynamic param we passed in "blog.route.js",
-        // we can access it using ".params"
-        const blogData = await Blog.findById(blogId);   // "findByID" -> method in MongoDB
+        const blogId = req.params.blogId;
+        const blogData = await Blog.findById(blogId);
         res.status(200).send(blogData);
     } catch(e) {
         res.status(500).send(e.message);
@@ -24,7 +23,7 @@ export const getBlogById = async (req, res) => {
 export const deleteBlogById = async (req, res) => {
     try {
         const blogId = req.params.blogId;
-        const data = await Blog.findByIdAndDelete(blogId);   // "findByIdAndDelete" -> method in MongoDB
+        const data = await Blog.findByIdAndDelete(blogId);
         res.status(200).send(data);
     } catch(e) {
         res.status(500).send(e.message);
@@ -33,9 +32,8 @@ export const deleteBlogById = async (req, res) => {
 
 export const createBlog = async (req, res) => {
     try {
-        const newBlogData = req.body;  // we'll get the new data in the request body
-        const data = await Blog.create(newBlogData);   //"Blog" is our model instance name 
-        //".create" -> method in MongoDB
+        const newBlogData = req.body;
+        const data = await Blog.create(newBlogData);
         res.status(200).send(data);
     } catch(e) {
         res.status(500).send(e.message);
@@ -46,10 +44,23 @@ export const updateBlogById = async (req, res) => {
     try {
         const newBlogData = req.body;
         const blogId = req.params.blogId;
-        const data = await Blog.updateOne({ _id: blogId }, {$set: newBlogData});   //".updateOne" -> method in MongoDB
-        // { _id: blogId } -> getting blogId , {$set: newBlogData} -> upsert: new data.
+        const data = await Blog.updateOne({ _id: blogId }, {$set: newBlogData});
         res.status(200).send(data);
     } catch(e) {
         res.status(500).send(e.message);
     }
+}
+
+// Rendering EJS files :::
+
+export const renderBlogs = async (req, res) => {
+    const blogs = await Blog.find({});   //"Blog" is our model
+    res.render("blogList", { blogs }); 
+    // "blogList" is a "view" that we have created
+}
+
+export const renderBlogById = async (req, res) => {
+    const blogId = req.params.blogId;
+    const blogData = await Blog.findById(blogId);
+    res.render(blogData);
 }
