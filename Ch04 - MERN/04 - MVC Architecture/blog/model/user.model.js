@@ -20,7 +20,8 @@ const userSchema = new Schema({
             required: true,
             minLength: [3, 'Min 3 chars'],
             maxLength: [10, 'Max 10 chars'],
-            select: false
+            select: false  // Password will not be shred by default by Server in any of the query
+            // as a response unless explicitly asked.
         }
 });
 
@@ -39,12 +40,12 @@ userSchema.pre("save", function(next) {
     next();
 });
 
-userSchema.post("save", function(next) {
-    const user = this;
-    console.log("Post Hook");
-    console.log(user);
-    next();
-});
+// userSchema.post("save", function(next) {
+//     const user = this;
+//     console.log("Post Hook");
+//     console.log(user);
+//     next();
+// });
 
 const User = model('user', userSchema);
 
