@@ -1,4 +1,5 @@
 import { model, Schema } from "mongoose";
+import bcrypt from "bcrypt";   // importing bcrypt
 
 const userSchema = new Schema({
         name: {
@@ -20,23 +21,28 @@ const userSchema = new Schema({
             required: true,
             minLength: [3, 'Min 3 chars'],
             maxLength: [10, 'Max 10 chars'],
-            select: false  // Password will not be shred by default by Server in any of the query
-            // as a response unless explicitly asked.
-        }
-});
+            select: false
+        },
+        isAdmin: {
+            type: Boolean,
+            default: false,
+        }, 
+    },
+    {timestamps: true}
+);
 
 
 // Middleware :::
-// Middleware functions (also known as pre and post hooks) enable developers to execute custom logic 
-// before or after certain methods or actions are performed on Mongoose models or documents.
 
-userSchema.pre("save", function(next) {
-    const user = this;
-    console.log("Pre Hook");
-    console.log(user);
-    user.password = user.password + "-encrypted";
-    // "next()" function is very important as use it to pass down the control.
-    // Every middleware hook should have a "next()" function.
+userSchema.pre("save", async function(next) {
+    try {
+        const user = this;
+        const salt = await bcrypt.genSalt(10);   // generating a salt of 10 digit.
+        const hashedPassword = await bcrypt.hash(user.password, salt);
+        user.password = hashedPassword;
+    } catch(e) {
+        console.log(e);
+    }
     next();
 });
 
@@ -50,12 +56,3 @@ userSchema.pre("save", function(next) {
 const User = model('user', userSchema);
 
 export default User;
-
-
-// PRE hook ::: Executes before the operation. Use next() to proceed or throw an error to halt.
-// POST hook ::: Executes after the operation has completed.
-// Middleware functions can be synchronous or asynchronous.
-// Middleware is registered on the schema, not the model.
-
-// Mongoose middleware makes your application more maintainable and expressive by allowing 
-// repetitive tasks to be handled automatically and consistently across your application.

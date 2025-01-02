@@ -26,7 +26,7 @@ app.all("*", (req, res) => {
     res.status(404).send("Page Not Found..!");
 })
 
-app.listen(5002, () => {      
-    console.log("Server started at http://localhost:5002");
+app.listen(5004, () => {      
+    console.log("Server started at http://localhost:5004");
     connectToDB();
 }); 
