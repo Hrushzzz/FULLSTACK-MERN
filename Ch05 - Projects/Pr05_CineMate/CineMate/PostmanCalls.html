@@ -1,0 +1,36 @@
+<!--
+
+==> POST ::: http://localhost:5004/api/user
+
+{
+    "name": "Hrishi TK",
+    "email": "spidey17@gmail.com",
+    "phone": "9494063682",
+    "password": 123456
+}
+
+{
+    "name": "Nani TK",
+    "email": "nani28@gmail.com",
+    "phone": "9987654321",
+    "password": abcdef
+}
+
+{
+    "name": "Cherry TK",
+    "email": "cherry24@gmail.com",
+    "phone": "9123456789",
+    "password": 654321
+}
+
+=> POST ::: Try email and password validation
+
+=> POST ::: http://localhost:5004/api/user/login
+{
+    "email": "nani28@gmail.com",
+    "password": abcdef
+}   ==> copy the jwttoken
+
+=> GET ::: http://localhost:5004/api/user => Header => key: jwtToken , value: ourToken code
+
+-->

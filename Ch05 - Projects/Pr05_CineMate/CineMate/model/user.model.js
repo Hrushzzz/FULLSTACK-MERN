@@ -4,31 +4,31 @@ import bcrypt from "bcrypt";   // importing bcrypt
 const userSchema = new Schema({
         name: {
             type: String,
-            required: true
+            required: true,
         },
         email: {
             type: String,
             required: true,
             lowercase: true,
-            unique: true
+            unique: true,
         },
         phone: {
             type: String,
-            required: true
+            required: true,
         },
         password: {
             type: String,
             required: true,
             minLength: [3, 'Min 3 chars'],
             maxLength: [10, 'Max 10 chars'],
-            select: false
+            select: false,
         },
         isAdmin: {
             type: Boolean,
             default: false,
         }, 
     },
-    {timestamps: true}
+    { timestamps: true }
 );
 
 
@@ -53,6 +53,6 @@ userSchema.pre("save", async function(next) {
 //     next();
 // });
 
-const User = model('user', userSchema);
+const User = model('users', userSchema);
 
 export default User;
