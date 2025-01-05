@@ -6,8 +6,11 @@ import jwt from "jsonwebtoken";
 export const getUserDetail = async (req, res) => {
     const jwtToken = req.headers["jwttoken"];   // ".headers" -> inbuilt method
     // console.log(jwtToken);
-    const userData = jwt.verify(jwtToken, "123456");   // ".verify" to validate and check if it is equal to encrypted token
-    
+    const userData = jwt.verify(jwtToken, process.env.jwt_secret_salt);
+    // ".verify" to validate and check if it is equal to encrypted token
+    //process.env.VARIABLE_NAME ==> syntax for accessing environment variables. In our case "123456" in ".env" file.
+    // In order for GIT to ignore the variables in ".env" file, we should add the file name in ".gitignore" file.
+
     if(userData) {
         console.log("Email", userData);
         const userInfo = await User.findOne({ email: userData.email});
@@ -58,6 +61,8 @@ export const login = async (req, res) => {
       );    // By default, password is not visible in DB as we wrote "select: false" in our model Schema.
       // So, we have called our password explicitly using ".select" to compare.
 
+    //   console.log(process.env.jwt_secret_salt);
+    
     if (!userDetail.email || !userDetail.password) {
         return res.status(400).send({
             status: false,
@@ -70,9 +75,11 @@ export const login = async (req, res) => {
         if (validPassword) {
             const jwtToken = jwt.sign(
                 {    //jwt.sign => inbuilt method in JWT 
-                email: user.email    // this is payload (refer to syntax)
+                email: user.email,    // this is payload (refer to syntax)
+                id: user._id,
+                isOwner: user.isOwner
                 },
-                "123456",     // this is salt/secretKey
+                process.env.jwt_secret_salt,     // this is salt/secretKey
                 { expiresIn: "1hr" }   // we add a expiry date for the token here
             );
 

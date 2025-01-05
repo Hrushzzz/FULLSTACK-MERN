@@ -1,25 +1,19 @@
 //const express = require("http");  
 import express from "express";
-
 import UserRoutes from "./routes/user.route.js";
-import BlogRoutes from "./routes/blog.route.js";
+import TheatreRoutes from "./routes/theatre.route.js";
 import connectToDB from "./database/mongoDb.js";
-import { renderBlogs, renderBlogById } from "./controllers/blog.controller.js";
+import 'dotenv/config';  // used to access "env" related components.
 
 const app = express();
 
-app.set("view engine", "ejs");   // => Configuring a "View Engine"
-// ejs --> Embedded JavaScript
-// This is used for View Layer of MVC architecture and "ejs" is our templating engine
+app.set("view engine", "ejs");
 
 app.use(express.json());
 
+// API's ::: 
 app.use("/api/user", UserRoutes);
-app.use("/api/blog", BlogRoutes);
-
-app.get('/blog/list', renderBlogs);
-app.get('/blog/:blogId', renderBlogById);   // rendering EJS files => views
-// app.get('/blog/:blogId/:blogTitle', renderBlogById);
+app.use("/api/theatre", TheatreRoutes);
 
 
 app.all("*", (req, res) => {
