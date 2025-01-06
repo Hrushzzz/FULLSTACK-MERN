@@ -80,3 +80,7 @@ export const deleteTheatre = async (req, res) => {
         });
     }
 };
+
+// deactive theatre
+
+// activate theatre
