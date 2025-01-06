@@ -2,6 +2,7 @@
 import express from "express";
 import UserRoutes from "./routes/user.route.js";
 import TheatreRoutes from "./routes/theatre.route.js";
+import MovieRoutes from "./routes/movie.route.js";
 import connectToDB from "./database/mongoDb.js";
 import 'dotenv/config';  // used to access "env" related components.
 
@@ -14,6 +15,7 @@ app.use(express.json());
 // API's ::: 
 app.use("/api/user", UserRoutes);
 app.use("/api/theatre", TheatreRoutes);
+app.use("/api/movie", MovieRoutes);
 
 
 app.all("*", (req, res) => {
