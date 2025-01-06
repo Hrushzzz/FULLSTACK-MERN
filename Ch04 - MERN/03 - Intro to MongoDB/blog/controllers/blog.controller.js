@@ -48,6 +48,7 @@ export const updateBlogById = async (req, res) => {
         const blogId = req.params.blogId;
         const data = await Blog.updateOne({ _id: blogId }, {$set: newBlogData});   //".updateOne" -> method in MongoDB
         // { _id: blogId } -> getting blogId , {$set: newBlogData} -> upsert: new data.
+        // "upsert" is always better as it updates only the changed details, rest all remains the same.
         res.status(200).send(data);
     } catch(e) {
         res.status(500).send(e.message);
