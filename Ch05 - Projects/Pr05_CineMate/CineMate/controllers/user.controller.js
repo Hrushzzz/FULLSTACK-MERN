@@ -57,7 +57,7 @@ export const login = async (req, res) => {
     const userDetail = req.body;    // "userDetail" are details from End user.
     //"user" is details stored in the DB
     const user = await User.findOne({ email: userDetail.email}).select(
-        "password email"
+        "password email isAdmin"
       );    // By default, password is not visible in DB as we wrote "select: false" in our model Schema.
       // So, we have called our password explicitly using ".select" to compare.
 
@@ -77,10 +77,10 @@ export const login = async (req, res) => {
                 {    //jwt.sign => inbuilt method in JWT 
                 email: user.email,    // this is payload (refer to syntax)
                 id: user._id,
-                isOwner: user.isOwner
+                isAdmin: user.isAdmin
                 },
                 process.env.jwt_secret_salt,     // this is salt/secretKey
-                { expiresIn: "1hr" }   // we add a expiry date for the token here
+                { expiresIn: "1d" }   // we add a expiry date for the token here
             );
 
             res.setHeader("jwtToken", jwtToken);   // setting up our json web token in the Header.
