@@ -23,8 +23,8 @@ export const updateShow = async (req, res) => {
         const updatedShowDetails = await Show.updateOne(
             { _id: req.params.showId },
             { $set: req.body }
-    );
-    res.send(updatedShowDetails);
+        );
+        res.send(updatedShowDetails);
     } catch(e) {
         res.status(500).send({
             success: false,
@@ -53,6 +53,9 @@ export const deleteShow = async (req, res) => {
 export const getShowById = async (req, res) => {
     try {
         const showDetail = await Show.findOne({ _id: req.params.showId }).populate(['theatre', 'movie']);
+        // In Mongoose, we use ".populate" to join two tables/ get all the data from the referenced tables, 
+        // this is similar to "joins" in SQL.
+        // We have to pass tables like an Array.
         res.send(showDetail);
     } catch(e) {
         res.status(500).send({
