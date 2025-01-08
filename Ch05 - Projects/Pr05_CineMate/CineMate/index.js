@@ -4,6 +4,7 @@ import UserRoutes from "./routes/user.route.js";
 import TheatreRoutes from "./routes/theatre.route.js";
 import MovieRoutes from "./routes/movie.route.js";
 import ShowRoutes from './routes/show.route.js';
+import BookingRoutes from "./routes/booking.route.js";
 import connectToDB from "./database/mongoDb.js";
 import 'dotenv/config';  // used to access "env" related components.
 
@@ -18,6 +19,7 @@ app.use("/api/user", UserRoutes);
 app.use("/api/theatre", TheatreRoutes);
 app.use("/api/movie", MovieRoutes);
 app.use("/api/show", ShowRoutes);
+app.use("/api/booking", BookingRoutes);
 
 
 app.all("*", (req, res) => {
