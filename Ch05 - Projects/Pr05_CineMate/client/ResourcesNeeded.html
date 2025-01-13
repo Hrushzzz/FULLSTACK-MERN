@@ -1,0 +1,28 @@
+<!--
+TAILWIND CSS with REACT ==> https://tailwindcss.com/docs/guides/create-react-app
+
+SETUP TAILWIND WITH "CRA" PROJECT :::
+
+==> Setup Tailwind with CRA project :::
+        1. Install: npm install -D tailwindcss 
+        2. npx tailwindcss init
+
+==> File: tailwind.config.js :::
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  content: ["./src/**/*.{js,jsx,ts,tsx}"],
+  theme: {
+    extend: {},
+  },
+  plugins: [],
+};
+
+==> File: index.css :::
+@tailwind base; @tailwind components; @tailwind utilities;
+
+==> File: index.js :::
+import './src/index.css';
+
+---------------------------------------------------------------------------------------
+
+-->
