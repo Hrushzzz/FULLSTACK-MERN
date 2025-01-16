@@ -23,11 +23,9 @@ function App() {
           <Route path="/movie/:movieId/theatres/:theatreId/shows/:showId" element={<ShowPage />} />
           <Route path="/movie/:movieId" element={<MovieDetail />} />
           <Route path="/movie/:movieId/theatres" element={<Theatres />} />
-
           <Route path="/admin/movies" element={<MovieList />} />
           <Route path="/admin/theatres" element={<TheatreList />} />
           <Route path="/admin/theatres/:theatreId/shows" element={<ShowsList />} />
-
           <Route path="/owner/theatres" element={<TheatreList />} />
           <Route path="/owner/theatres/:theatreId/shows" element={<ShowsList />} />
         </Routes>
