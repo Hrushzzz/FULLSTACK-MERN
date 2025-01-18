@@ -6,9 +6,12 @@ import MovieRoutes from "./routes/movie.route.js";
 import ShowRoutes from './routes/show.route.js';
 import BookingRoutes from "./routes/booking.route.js";
 import connectToDB from "./database/mongoDb.js";
+import cors from "cors";
+
 import 'dotenv/config';  // used to access "env" related components.
 
 const app = express();
+app.use(cors());
 
 app.set("view engine", "ejs");
 
