@@ -16,7 +16,7 @@ const Login = () => {
 
   const handleLogin = (e) => {
     e.preventDefault();
-    fetch("http://localhost:5004/api/user/login", {
+    fetch("http://localhost:5010/api/user/login", {
       method: "POST",
       body: JSON.stringify(userData),
       headers: {

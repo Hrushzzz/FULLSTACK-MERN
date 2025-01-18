@@ -15,7 +15,7 @@ const SignUp = () => {
 
   const handleRegister = (e) => {
     e.preventDefault();
-    fetch("http://localhost:5004/api/user", {
+    fetch("http://localhost:5010/api/user", {
       method: "POST",
       body: JSON.stringify(userData),
       header: {

@@ -12,7 +12,8 @@ const connectToDB = async() => {
             // connection.host ==> tells us to which database we are connected to.
         }
     } catch(e) {
-        console.log("Error Connecting"); 
+        console.error("Error Connecting to MongoDB:", e.message);
+        console.error(e.stack); 
     }
 }
 

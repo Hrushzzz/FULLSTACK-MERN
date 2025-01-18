@@ -1,19 +1,11 @@
-import React, { useState } from 'react';
+
+import React, { useEffect, useState } from 'react';
 import Modal from 'react-modal';
 import { useNavigate, useLocation } from 'react-router-dom';
-
-const theatresData = [
-  // Example theatre data
-  {
-    name: 'Grand Theatre',
-    location: '123 Main St, Anytown',
-    phone: '123-456-7890',
-    email: 'info@grandtheatre.com',
-  },
-];
+import { jwtToken } from '../constants/authToken';
 
 const TheatreList = () => {
-  const [theatres, setTheatres] = useState(theatresData);
+  const [theatres, setTheatres] = useState([]);
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [newTheatre, setNewTheatre] = useState({
     name: '',
@@ -30,21 +22,47 @@ const TheatreList = () => {
     setNewTheatre({ ...newTheatre, [name]: value });
   };
 
-  const handleAddTheatre = () => {
-    setTheatres([...theatres, newTheatre]);
-    setNewTheatre({
-      name: '',
-      location: '',
-      phone: '',
-      email: '',
-    });
-    setModalIsOpen(false);
+  const handleAddTheatre = (e) => {
+    e.preventDefault();
+    fetch("http://localhost:5010/api/theatre", {
+      method: "POST",
+      body: JSON.stringify(newTheatre),
+      headers: {
+        "Content-Type": "application/json",
+        jwttoken: jwtToken
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        setTheatres([...theatres, newTheatre]);
+        setNewTheatre({
+          name: '',
+          location: '',
+          phone: '',
+          email: '',
+        });
+        setModalIsOpen(false);
+      })
+      .catch((e) => {
+        window.alert(e.message);
+      });
   };
+
+  useEffect(() => {
+    fetch("http://localhost:5010/api/theatre", {
+      headers: {
+        jwttoken: jwtToken
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => setTheatres(data));
+  }, []);
 
   return (
     <div className="min-h-screen p-4 bg-gray-100">
       <div className="max-w-7xl mx-auto bg-white p-8 rounded-lg shadow-lg">
         <h2 className="text-2xl font-bold mb-6">Theatres</h2>
+
         <div className="mb-4 flex justify-between items-center">
           <input
             type="text"
@@ -62,7 +80,8 @@ const TheatreList = () => {
             )
           }
         </div>
-        <table className="min-w-full bg-white">
+
+        <table className="min-w-full bg-white align-start">
           <thead>
             <tr>
               <th className="py-2 px-4 border-b border-gray-200">Name</th>
@@ -73,6 +92,7 @@ const TheatreList = () => {
               <th className="py-2 px-4 border-b border-gray-200">Actions</th>
             </tr>
           </thead>
+
           <tbody>
             {theatres.map((theatre, index) => (
               <tr key={index}>
@@ -82,7 +102,7 @@ const TheatreList = () => {
                 <td className="py-2 px-4 border-b border-gray-200">{theatre.email}</td>
                 <td className="py-2 px-4 border-b border-gray-200">
                   <button
-                    onClick={() => navigate(`/owner/theatres/${index}/shows`)}
+                    onClick={() => navigate(`/owner/theatres/${theatre._id}/shows`)}
                     className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
                   >
                     Shows
@@ -122,6 +142,7 @@ const TheatreList = () => {
           </tbody>
         </table>
       </div>
+
       <Modal
         isOpen={modalIsOpen}
         onRequestClose={() => setModalIsOpen(false)}
@@ -130,6 +151,7 @@ const TheatreList = () => {
         overlayClassName="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center"
       >
         <h2 className="text-2xl font-bold mb-4">Add Theatre</h2>
+
         <form onSubmit={handleAddTheatre}>
           <div className="mb-4">
             <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="name">
@@ -145,6 +167,7 @@ const TheatreList = () => {
               placeholder="Name"
             />
           </div>
+
           <div className="mb-4">
             <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="location">
               Location
@@ -159,6 +182,7 @@ const TheatreList = () => {
               placeholder="Location"
             />
           </div>
+
           <div className="mb-4">
             <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="phone">
               Phone
@@ -173,6 +197,7 @@ const TheatreList = () => {
               placeholder="Phone"
             />
           </div>
+
           <div className="mb-4">
             <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="email">
               Email
@@ -187,6 +212,7 @@ const TheatreList = () => {
               placeholder="Email"
             />
           </div>
+
           <div className="flex items-center justify-between">
             <button
               type="button"
