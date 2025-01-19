@@ -57,6 +57,7 @@ const Theatres = () => {
     })
       .then((res) => res.json())
       .then((data) => {
+        console.log(theatreAndShowsMapper(data));
         setTheatres(theatreAndShowsMapper(data));
       });
   }, []);
