@@ -11,6 +11,32 @@ export const makePayment = async (req, res) => {
     }
 }
 
+export const getPaymentClientSecret = async (req, res) => {
+    try {
+      const bookingDetails = req.body;
+  
+      // Create a PaymentIntent with the order amount and currency
+      const paymentIntent = await stripe.paymentIntents.create({
+        amount: bookingDetails.seats * bookingDetails.price * 100,
+        currency: "inr",
+        payment_method_types: ["card"],
+        metadata: {
+          showId: bookingDetails.showId,
+          seats: bookingDetails.seats,
+        },
+      });
+  
+      res.send({
+        clientSecret: paymentIntent.client_secret,
+      });
+    } catch (e) {
+      res.status(500).send({
+        success: false,
+        message: e.message,
+      });
+    }
+  };
+
 export const createBooking = async (req, res) => {
     try {
         // UserId --> req.user (jwt token)
