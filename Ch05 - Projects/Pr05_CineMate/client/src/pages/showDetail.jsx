@@ -1,42 +1,42 @@
 import React, { useEffect, useState, useTransition } from "react";
 import { useNavigate, useParams, useSearchParams } from "react-router-dom";
 import { jwtToken } from "../constants/authToken";
-// import { stripePromise } from "../App";
-// import { Elements } from "@stripe/react-stripe-js";
+import { stripePromise } from "../App";
+import { Elements } from "@stripe/react-stripe-js";
 
-// import CheckoutForm from "./CheckoutForm";
+import CheckoutForm from "./CheckoutForm";
 
 const ShowPage = () => {
   const { showId } = useParams();
   const [show, setShow] = useState({});
   const [selectedSeats, setSelectedSeats] = useState(1);
-  // const [clientSecret, setClientSecret] = useState("");
+  const [clientSecret, setClientSecret] = useState("");
   // let [searchParams] = useSearchParams();
   // const navigate = useNavigate();
 
-  // const appearance = {
-  //   theme: "stripe",
-  // };
+  const appearance = {
+    theme: "stripe",
+  };
 
   const handleSeatChange = (e) => {
     setSelectedSeats(Number(e.target.value));
   };
 
-  // const handleBookSeats = () => {
-  //   // Implementing booking logic here
-  //   // Creating PaymentIntent as soon as the page loads
-  //   fetch("http://localhost:5010/api/booking/get-payment-secret", {
-  //     method: "POST",
-  //     headers: { "Content-Type": "application/json", jwttoken: jwtToken },
-  //     body: JSON.stringify({
-  //       seats: selectedSeats,
-  //       price: show.ticketPrice,
-  //       showId,
-  //     }),
-  //   })
-  //     .then((res) => res.json())
-  //     .then((data) => setClientSecret(data.clientSecret));
-  // };
+  const handleBookSeats = () => {
+    // Implementing booking logic here
+    // Creating PaymentIntent as soon as the page loads
+    fetch("http://localhost:5010/api/booking/get-payment-secret", {
+      method: "POST",
+      headers: { "Content-Type": "application/json", jwttoken: jwtToken },
+      body: JSON.stringify({
+        seats: selectedSeats,
+        price: show.ticketPrice,
+        showId,
+      }),
+    })
+      .then((res) => res.json())
+      .then((data) => setClientSecret(data.clientSecret));
+  };
 
   useEffect(() => {
     fetch(`http://localhost:5010/api/show/${showId}`, {
@@ -120,14 +120,14 @@ const ShowPage = () => {
             ))}
           </select>
           <button
-            // onClick={handleBookSeats}
+            onClick={handleBookSeats}
             className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
           >
             Book Seat
           </button>
         </div>
 
-        {/* {clientSecret && (
+        {clientSecret && (
           <Elements
             options={{
               clientSecret,
@@ -137,7 +137,7 @@ const ShowPage = () => {
           >
             <CheckoutForm successUrl={window.location.href} />
           </Elements>
-        )} */}
+        )}
       </div>
     </div>
   );
