@@ -11,8 +11,8 @@ const ShowPage = () => {
   const [show, setShow] = useState({});
   const [selectedSeats, setSelectedSeats] = useState(1);
   const [clientSecret, setClientSecret] = useState("");
-  // let [searchParams] = useSearchParams();
-  // const navigate = useNavigate();
+  let [searchParams] = useSearchParams();
+  const navigate = useNavigate(); 
 
   const appearance = {
     theme: "stripe",
@@ -53,25 +53,25 @@ const ShowPage = () => {
       });
   }, []);
 
-  // useEffect(() => {
-  //   // Call confirm booking API
+  useEffect(() => {
+    // Call confirm booking API
 
-  //   const transactionId = searchParams.get("payment_intent");
-
-  //   if (transactionId) {
-  //     fetch("http://localhost:5010/api/booking/confirm", {
-  //       method: "POST",
-  //       headers: { "Content-Type": "application/json", jwttoken: jwtToken },
-  //       body: JSON.stringify({
-  //         transactionId: searchParams.get("payment_intent"),
-  //       }),
-  //     })
-  //       .then((res) => res.json())
-  //       .then((data) => {
-  //         navigate("/profile/bookings");
-  //       });
-  //   }
-  // }, [searchParams]);
+    const transactionId = searchParams.get("payment_intent");
+    // if "transactionId" is present in the URL, then only perform this:
+    if (transactionId) {
+      fetch("http://localhost:5010/api/booking/confirm", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", jwttoken: jwtToken },
+        body: JSON.stringify({
+          transactionId: searchParams.get("payment_intent"),
+        }),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          navigate("/profile/bookings");
+        });
+    }
+  }, [searchParams]);
 
   return (
     <div className="min-h-screen p-4 bg-gray-100">

@@ -42,6 +42,7 @@ export const createBooking = async (req, res) => {
     const paymentIntent = await stripe.paymentIntents.retrieve(
       bookingDetails.transactionId
     );
+    console.log(paymentIntent);
     const booking = new Booking({
       ...bookingDetails,
       seats: paymentIntent.metadata.seats,
@@ -61,6 +62,7 @@ export const createBooking = async (req, res) => {
     res.send({
       success: true,
       message: "Booking is confirm",
+      ...paymentIntent
     });
   } catch (e) {
     console.log(e);

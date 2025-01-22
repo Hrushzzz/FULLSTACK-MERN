@@ -13,7 +13,7 @@ const bookingSchema = new Schema(
             unique: true,
         },
         seats: {
-            type: [String],
+            type: Number,
             required: true,
         },
         show: {
