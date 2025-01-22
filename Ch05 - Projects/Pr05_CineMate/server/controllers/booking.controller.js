@@ -55,7 +55,7 @@ export const createBooking = async (req, res) => {
       from: '"Hrushikesh" <spidey17@gmail.com>', // sender address
       to: "x@gmail.com, y@gmail.com", // list of receivers
       subject: "Booking is confirmed", // Subject line
-      text: "Hello world?", // plain text body
+      text: "Come and Enjoy the movie.. Cheers..!", // plain text body
       html: "<b>Hello world?</b>", // html body
     });
 

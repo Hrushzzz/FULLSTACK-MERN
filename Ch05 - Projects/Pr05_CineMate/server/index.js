@@ -7,8 +7,19 @@ import ShowRoutes from './routes/show.route.js';
 import BookingRoutes from "./routes/booking.route.js";
 import connectToDB from "./database/mongoDb.js";
 import cors from "cors";
+import nodemailer  from 'nodemailer';
 
 import 'dotenv/config';  // used to access "env" related components.
+
+// creating a transporter to send mails
+export const transporter = nodemailer.createTransport({
+    host: "smtp.mandrillapp.com",
+    port: 587,
+    auth: {
+        user: "spidey17@gmail.com",
+        process: process.env.mailchimp_key
+    }
+})
 
 const app = express();
 app.use(cors());
