@@ -1,9 +1,9 @@
-// import { transporter } from "../index.js";
+import { transporter } from "../index.js";
 import Booking from "../model/booking.model.js";
-import stripe from "stripe";
+import Stripe from "stripe";
 
-// const stripe = new Stripe(process.env.stripe_secret_key);
-const stripe = require("stripe")("pk_test_51QjO0gB2qkcK8mR1uGMlF2QGfo0YDjuPlVN218AMeLrYLSVD8Y3Ox9hkbIoDEGovPhu8KYZkYqkczqqdEx4w1HMs00PpyMibuo")
+const stripe = new Stripe(process.env.stripe_secret_key);
+// const stripe = require("stripe")("pk_test_51QjO0gB2qkcK8mR1uGMlF2QGfo0YDjuPlVN218AMeLrYLSVD8Y3Ox9hkbIoDEGovPhu8KYZkYqkczqqdEx4w1HMs00PpyMibuo")
 
 export const getPaymentClientSecret = async (req, res) => {
   try {
