@@ -8,8 +8,10 @@ import BookingRoutes from "./routes/booking.route.js";
 import connectToDB from "./database/mongoDb.js";
 import cors from "cors";
 import nodemailer  from 'nodemailer';
-
 import 'dotenv/config';  // used to access "env" related components.
+import { Server } from "socket.io";   // importing "server" instance from socket.io
+import http from "http";
+import { log } from "console";
 
 // creating a transporter to send mails
 export const transporter = nodemailer.createTransport({
@@ -42,6 +44,16 @@ app.all("*", (req, res) => {
 
 const PORT = process.env.port || 8080;
 app.listen(PORT, () => {      
-    console.log("Server started at http://localhost:5010");
+    console.log(`Server started at http://localhost:${PORT}`);
     connectToDB();
 }); 
+
+const server = http.createServer(app);  // Here, app refers to express server we created.
+const io = new Server(server);   // passing http server instance to websocket io to create for the first time.
+
+io.on("connection", (socket) => {
+    console.log(socket.id);
+    socket.on("message", (msg) => {
+        console.log(msg);
+    })
+})
