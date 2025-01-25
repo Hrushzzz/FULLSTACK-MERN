@@ -42,18 +42,32 @@ app.all("*", (req, res) => {
     res.status(404).send("Page Not Found..!");
 })
 
-const PORT = process.env.port || 8080;
-app.listen(PORT, () => {      
-    console.log(`Server started at http://localhost:${PORT}`);
-    connectToDB();
-}); 
+const PORT = process.env.port || 5001;
+// app.listen(PORT, () => {      
+//     console.log(`Server started at http://localhost:${PORT}`);
+//     connectToDB();
+// }); 
 
 const server = http.createServer(app);  // Here, app refers to express server we created.
-const io = new Server(server);   // passing http server instance to websocket io to create for the first time.
+const io = new Server(server, {   // passing http server instance to websocket io to create for the first time.
+    cors: {
+        origin: "http://localhost:3001"
+    }
+});   
 
 io.on("connection", (socket) => {
     console.log(socket.id);
     socket.on("message", (msg) => {
         console.log(msg);
+        io.emit("message", msg);
+    })
+    socket.on("message2", (msg) => {  // we can have multiple socket listeners as well.
+        console.log(msg);
+        io.emit("message2", msg);
     })
 })
+
+server.listen(PORT, () => {
+    console.log(`Server started at http://localhost:${PORT}`);
+    connectToDB();
+});
