@@ -11,7 +11,10 @@ import nodemailer  from 'nodemailer';
 import 'dotenv/config';  // used to access "env" related components.
 import { Server } from "socket.io";   // importing "server" instance from socket.io
 import http from "http";
-import { log } from "console";
+import { fileURLToPath } from "url";
+
+const __fileName = fileURLToPath(import.meta.url);
+const __dirname = path.__dirname(__fileName);
 
 // creating a transporter to send mails
 export const transporter = nodemailer.createTransport({
@@ -30,6 +33,8 @@ app.set("view engine", "ejs");
 
 app.use(express.json());
 
+app.use(express.static("build"));
+
 // API's ::: 
 app.use("/api/user", UserRoutes);
 app.use("/api/theatre", TheatreRoutes);
@@ -38,8 +43,12 @@ app.use("/api/show", ShowRoutes);
 app.use("/api/booking", BookingRoutes);
 
 
+// app.all("*", (req, res) => {
+//     res.status(404).send("Page Not Found..!");
+// })
+
 app.all("*", (req, res) => {
-    res.status(404).send("Page Not Found..!");
+    res.sendFile(path.join(__dirname, "build", "index.html"));
 })
 
 const PORT = process.env.port || 5001;
